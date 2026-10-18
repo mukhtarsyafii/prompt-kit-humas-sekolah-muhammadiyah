@@ -1,6 +1,6 @@
 # Prompt Kit Humas Sekolah Muhammadiyah
 
-> Suite Produktivitas & Generator Prompt AI Berbasis Formula PANDU untuk Tim Kehumasan Sekolah Muhammadiyah (Kolaborasi Langgam.id × Majelis Dikdasmen PWM Sumatera Barat).
+> Suite Produktivitas & Generator Prompt AI Berbasis Formula PANDU untuk Tim Kehumasan Sekolah Muhammadiyah.
 
 Aplikasi web modern yang dirancang untuk mempercepat dan meningkatkan kualitas produksi konten publikasi, komunikasi orang tua, rilis berita jurnalistik, dan promosi PPDB sekolah Muhammadiyah secara etis dengan prinsip **Human-in-the-Loop** (AI sebagai penyusun draf cepat, manusia sebagai penentu dan verifikator akhir).
 
@@ -55,9 +55,3 @@ cd humas-muhammadiyah
 python3 -m http.server 8080
 ```
 Buka browser dan akses `http://localhost:8080`.
-
----
-
-## 📜 Hak Cipta & Kolaborasi
-Dikembangkan untuk memajukan syiar dan mutu kehumasan sekolah-sekolah Muhammadiyah.
-Kolaborasi: **Langgam.id × Majelis Dikdasmen PWM Sumatera Barat**.
