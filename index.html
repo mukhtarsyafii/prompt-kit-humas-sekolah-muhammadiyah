@@ -1,0 +1,2240 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Prompt Kit Humas Sekolah Muhammadiyah — Apple Inspired Design</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=SF+Pro+Display:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   DESIGN TOKENS & APPLE DESIGN SYSTEM (HIG INSPIRED)
+   Gradasi Hijau Tua Mewah x Champagne Gold
+   ========================================================================== */
+:root {
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Plus Jakarta Sans", "Helvetica Neue", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+
+  /* Easing curves ala Apple */
+  --ease-apple: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Dimensi & Radius */
+  --radius-xs: 8px;
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+  --radius-xl: 30px;
+  --radius-pill: 9999px;
+
+  /* Z-Index Hierarchy */
+  --z-nav: 100;
+  --z-floating: 200;
+  --z-modal: 500;
+  --z-toast: 1000;
+}
+
+/* ---------------- DARK THEME (Default: Emerald Midnight & Gold) ---------------- */
+[data-theme="dark"] {
+  --bg-gradient: radial-gradient(circle at 50% 0%, #0d3b1f 0%, #062412 40%, #031409 100%);
+  --bg-body: #04160c;
+  --bg-canvas: rgba(7, 28, 16, 0.75);
+  
+  --surface-glass: rgba(12, 38, 22, 0.62);
+  --surface-glass-hover: rgba(16, 48, 28, 0.8);
+  --surface-glass-active: rgba(22, 60, 36, 0.9);
+  --surface-card: rgba(8, 30, 18, 0.72);
+  --surface-input: rgba(4, 20, 11, 0.65);
+  --surface-code: #020c06;
+  
+  --border-subtle: rgba(245, 215, 127, 0.16);
+  --border-glass: rgba(245, 215, 127, 0.28);
+  --border-highlight: rgba(255, 255, 255, 0.18);
+  --border-focus: #f5d77f;
+
+  /* Gold Palette (Brushed Imperial Champagne) */
+  --gold-primary: #f5d77f;
+  --gold-glow: #ffe7a3;
+  --gold-deep: #c9a444;
+  --gold-gradient: linear-gradient(135deg, #fae29c 0%, #dfb743 50%, #b88d22 100%);
+  --gold-btn-shadow: 0 8px 24px -4px rgba(223, 183, 67, 0.35);
+
+  /* Emerald Tones */
+  --emerald-main: #008744;
+  --emerald-light: #20b263;
+  --emerald-tint: rgba(32, 178, 99, 0.14);
+
+  /* Text Colors */
+  --text-primary: #f8faf6;
+  --text-secondary: rgba(244, 248, 242, 0.76);
+  --text-tertiary: rgba(244, 248, 242, 0.5);
+  --text-gold: #f7df94;
+  
+  /* Status & Accents */
+  --danger-bg: rgba(220, 38, 38, 0.18);
+  --danger-border: rgba(248, 113, 113, 0.45);
+  --danger-text: #fca5a5;
+
+  --success-bg: rgba(16, 185, 129, 0.18);
+  --success-border: rgba(52, 211, 153, 0.45);
+  --success-text: #6ee7b7;
+
+  /* Shadows */
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.25);
+  --shadow-card: 0 16px 40px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  --shadow-hover: 0 20px 48px -10px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(245, 215, 127, 0.3);
+  --shadow-dock: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(245, 215, 127, 0.2);
+
+  --cal-today-bg: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  --cal-today-text: #ffffff;
+  --cal-hasplan-bg: rgba(245, 215, 127, 0.12);
+  --cal-outside-bg: rgba(255, 255, 255, 0.03);
+}
+
+/* ---------------- LIGHT THEME (Pristine Mint Alabaster & Forest Gold) ---------------- */
+[data-theme="light"] {
+  --bg-gradient: radial-gradient(circle at 50% 0%, #f0f7f2 0%, #e8f2eb 45%, #ddebe1 100%);
+  --bg-body: #eef5f0;
+  --bg-canvas: rgba(255, 255, 255, 0.85);
+
+  --surface-glass: rgba(255, 255, 255, 0.78);
+  --surface-glass-hover: rgba(255, 255, 255, 0.95);
+  --surface-glass-active: rgba(240, 248, 242, 0.98);
+  --surface-card: rgba(255, 255, 255, 0.88);
+  --surface-input: rgba(245, 250, 246, 0.9);
+  --surface-code: #0b2213;
+
+  --border-subtle: rgba(184, 141, 34, 0.22);
+  --border-glass: rgba(184, 141, 34, 0.35);
+  --border-highlight: rgba(255, 255, 255, 0.9);
+  --border-focus: #a87915;
+
+  /* Gold Palette (Warm Antique Gold) */
+  --gold-primary: #8a6510;
+  --gold-glow: #b08216;
+  --gold-deep: #684a07;
+  --gold-gradient: linear-gradient(135deg, #d8a834 0%, #b88d22 50%, #946f14 100%);
+  --gold-btn-shadow: 0 8px 24px -4px rgba(184, 141, 34, 0.35);
+
+  /* Emerald Tones */
+  --emerald-main: #0b582b;
+  --emerald-light: #0d7539;
+  --emerald-tint: rgba(11, 88, 43, 0.1);
+
+  /* Text Colors */
+  --text-primary: #082414;
+  --text-secondary: #274532;
+  --text-tertiary: #5d7866;
+  --text-gold: #8a6510;
+
+  /* Status */
+  --danger-bg: rgba(254, 226, 226, 0.85);
+  --danger-border: rgba(248, 113, 113, 0.6);
+  --danger-text: #991b1b;
+
+  --success-bg: rgba(209, 250, 229, 0.85);
+  --success-border: rgba(52, 211, 153, 0.6);
+  --success-text: #065f46;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(9, 36, 18, 0.06);
+  --shadow-card: 0 16px 40px -10px rgba(9, 36, 18, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  --shadow-hover: 0 20px 48px -10px rgba(9, 36, 18, 0.18), inset 0 1px 0 rgba(255, 255, 255, 1);
+  --shadow-dock: 0 20px 50px rgba(9, 36, 18, 0.15), 0 0 0 1px rgba(184, 141, 34, 0.25);
+
+  --cal-today-bg: linear-gradient(135deg, #059669 0%, #047857 100%);
+  --cal-today-text: #ffffff;
+  --cal-hasplan-bg: rgba(184, 141, 34, 0.12);
+  --cal-outside-bg: rgba(0, 0, 0, 0.03);
+}
+
+/* ==========================================================================
+   BASE & RESET
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg-body);
+  background-image: var(--bg-gradient);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  min-height: 100vh;
+  padding-bottom: 96px; /* space for mobile bottom dock */
+  transition: background 0.4s var(--ease-apple), color 0.3s var(--ease-apple);
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Subtle background illumination glow */
+body::before {
+  content: "";
+  position: fixed;
+  top: -150px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  max-width: 100vw;
+  height: 480px;
+  background: radial-gradient(ellipse at center, rgba(245, 215, 127, 0.12) 0%, rgba(32, 178, 99, 0.08) 45%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.app-container {
+  max-width: 1120px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 24px 20px 40px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ==========================================================================
+   APPLE TOP BAR & CONTROLS
+   ========================================================================== */
+.top-action-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.brand-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 16px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-glass);
+  box-shadow: inset 0 1px 0 var(--border-highlight);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-gold);
+}
+
+.theme-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--surface-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-pill);
+  padding: 8px 16px;
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: inset 0 1px 0 var(--border-highlight);
+  transition: all 0.25s var(--ease-apple);
+}
+.theme-toggle-btn:hover {
+  background: var(--surface-glass-hover);
+  transform: translateY(-1px);
+}
+.theme-toggle-btn:active {
+  transform: scale(0.96);
+}
+
+/* ==========================================================================
+   HERO SECTION
+   ========================================================================== */
+.hero-header {
+  text-align: center;
+  padding: 24px 16px 36px;
+}
+
+.hero-title {
+  font-size: clamp(28px, 5.5vw, 46px);
+  font-weight: 800;
+  letter-spacing: -0.8px;
+  line-height: 1.15;
+  margin-bottom: 14px;
+  color: var(--text-primary);
+}
+
+.hero-title em {
+  font-style: normal;
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  text-shadow: 0 2px 14px rgba(223, 183, 67, 0.2);
+}
+
+.hero-subtitle {
+  font-size: clamp(15px, 2.5vw, 17px);
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   APPLE SEGMENTED CONTROL (TABS)
+   ========================================================================== */
+.segmented-nav-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.segmented-control {
+  display: inline-flex;
+  background: var(--surface-glass);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--border-glass);
+  padding: 5px;
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-sm), inset 0 1px 0 var(--border-highlight);
+  gap: 4px;
+  max-width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.segmented-control::-webkit-scrollbar {
+  display: none;
+}
+
+.seg-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  font-weight: 600;
+  padding: 9px 20px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.22s var(--ease-apple);
+}
+
+.seg-item:hover {
+  color: var(--text-primary);
+}
+
+.seg-item.active {
+  background: var(--gold-gradient);
+  color: #062412;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(223, 183, 67, 0.35);
+}
+
+/* ==========================================================================
+   APPLE GLASS CARDS
+   ========================================================================== */
+.glass-card {
+  background: var(--surface-card);
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.3s var(--ease-apple), border-color 0.3s var(--ease-apple);
+}
+
+.glass-card:hover {
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(245, 215, 127, 0.4);
+}
+
+.card-title {
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: -0.4px;
+  color: var(--text-gold);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.card-desc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin-bottom: 20px;
+}
+
+/* ==========================================================================
+   FORM INPUTS & CHIPS (iOS/macOS Style)
+   ========================================================================== */
+.form-group {
+  margin-bottom: 20px;
+}
+
+label.field-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--text-gold);
+  margin-bottom: 8px;
+}
+
+.input-control, .select-control, .textarea-control {
+  width: 100%;
+  background: var(--surface-input);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 14.5px;
+  padding: 13px 16px;
+  outline: none;
+  transition: all 0.2s var(--ease-apple);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+.input-control:focus, .select-control:focus, .textarea-control:focus {
+  border-color: var(--border-focus);
+  background: var(--surface-glass-hover);
+  box-shadow: 0 0 0 3px rgba(245, 215, 127, 0.22);
+}
+
+.select-control {
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f5d77f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 16px;
+  padding-right: 40px;
+}
+
+[data-theme="light"] .select-control {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238a6510' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+}
+
+.select-control option {
+  background: var(--bg-body);
+  color: var(--text-primary);
+}
+
+.textarea-control {
+  line-height: 1.6;
+  resize: vertical;
+  min-height: 84px;
+}
+
+.grid-2col {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+/* Apple Tag Chips */
+.chip-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.apple-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--surface-glass);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-pill);
+  padding: 8px 16px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s var(--ease-apple);
+  user-select: none;
+}
+
+.apple-chip:hover {
+  background: var(--surface-glass-hover);
+  color: var(--text-primary);
+  border-color: var(--border-glass);
+}
+
+.apple-chip.active {
+  background: var(--gold-gradient);
+  color: #062412;
+  font-weight: 700;
+  border-color: transparent;
+  box-shadow: 0 4px 12px rgba(223, 183, 67, 0.3);
+}
+
+/* ==========================================================================
+   BUTTONS (Primary, Secondary, Accent)
+   ========================================================================== */
+.btn-primary-apple {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  margin-top: 24px;
+  background: var(--gold-gradient);
+  color: #062412;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-sans);
+  font-size: 15.5px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 15px 24px;
+  cursor: pointer;
+  box-shadow: var(--gold-btn-shadow);
+  transition: all 0.22s var(--ease-apple);
+}
+
+.btn-primary-apple:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px -4px rgba(223, 183, 67, 0.5);
+}
+
+.btn-primary-apple:active {
+  transform: scale(0.98);
+}
+
+.btn-apple-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--surface-glass);
+  border: 1px solid var(--border-glass);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s var(--ease-apple);
+}
+.btn-apple-secondary:hover {
+  background: var(--surface-glass-hover);
+  border-color: var(--border-focus);
+}
+.btn-apple-secondary:active {
+  transform: scale(0.97);
+}
+
+/* ==========================================================================
+   RESULT BOX & PROMPT OUTPUT (Code / Mac Terminal Style)
+   ========================================================================== */
+.result-container {
+  display: none;
+  margin-top: 26px;
+  animation: fadeIn 0.3s var(--ease-apple);
+}
+
+.result-container.show {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.terminal-box {
+  background: var(--surface-code);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.terminal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mac-dots {
+  display: flex;
+  gap: 6px;
+}
+.mac-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.dot-red { background: #ff5f56; }
+.dot-yellow { background: #ffbd2e; }
+.dot-green { background: #27c93f; }
+
+.terminal-title {
+  font-size: 11.5px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-gold);
+  font-weight: 600;
+}
+
+.prompt-text-output {
+  padding: 20px;
+  color: #e2ecd9;
+  font-family: var(--font-sans);
+  font-size: 14.5px;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-height: 440px;
+  overflow-y: auto;
+}
+
+.copy-action-bar {
+  display: flex;
+  gap: 12px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+.btn-copy-main {
+  flex: 2;
+  min-width: 180px;
+  background: var(--gold-gradient);
+  color: #062412;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 14.5px;
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: all 0.2s var(--ease-apple);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.btn-copy-main:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--gold-btn-shadow);
+}
+.btn-copy-main:active {
+  transform: scale(0.98);
+}
+
+/* ==========================================================================
+   LIBRARY TAB ITEMS
+   ========================================================================== */
+.search-library-wrapper {
+  margin-bottom: 20px;
+}
+
+.library-item-card {
+  background: var(--surface-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  margin-bottom: 16px;
+  transition: all 0.25s var(--ease-apple);
+}
+
+.library-item-card:hover {
+  background: var(--surface-glass-hover);
+  border-color: var(--border-glass);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.lib-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: var(--emerald-tint);
+  color: var(--emerald-light);
+  border: 1px solid rgba(32, 178, 99, 0.3);
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 10px;
+}
+
+.library-item-card h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-gold);
+  margin-bottom: 6px;
+}
+
+.library-item-card p.lib-desc {
+  font-size: 13.5px;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin-bottom: 12px;
+}
+
+.library-item-card pre.lib-pre {
+  display: none;
+  background: var(--surface-code);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: #dfe8d8;
+  white-space: pre-wrap;
+  margin-top: 12px;
+}
+
+.library-item-card.open pre.lib-pre {
+  display: block;
+}
+
+/* Apple-style Inline Draft Editor for Library Items */
+.lib-edit-box {
+  display: none;
+  background: var(--surface-card);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  margin-top: 14px;
+  animation: fadeIn 0.25s var(--ease-apple);
+}
+.lib-edit-box.show {
+  display: block;
+}
+.lib-edit-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-gold);
+  margin-bottom: 8px;
+}
+.lib-draft-textarea {
+  width: 100%;
+  min-height: 120px;
+  background: var(--surface-input);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.6;
+  padding: 12px 14px;
+  outline: none;
+  resize: vertical;
+  transition: all 0.2s var(--ease-apple);
+}
+.lib-draft-textarea:focus {
+  border-color: var(--border-focus);
+  background: var(--surface-glass-hover);
+  box-shadow: 0 0 0 3px rgba(245, 215, 127, 0.22);
+}
+.lib-edit-actionbar {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.lib-edit-hint {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  margin-top: 8px;
+}
+.lib-copy-all-btn {
+  background: var(--gold-gradient);
+  color: #062412;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 13.5px;
+  padding: 10px 18px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s var(--ease-apple);
+}
+.lib-copy-all-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--gold-btn-shadow);
+}
+.lib-copy-all-btn:active {
+  transform: scale(0.98);
+}
+
+/* ==========================================================================
+   PANDU CARDS
+   ========================================================================== */
+.pandu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+  margin-top: 12px;
+}
+
+.pandu-card {
+  background: var(--surface-glass);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 18px 16px;
+  text-align: center;
+  transition: all 0.25s var(--ease-apple);
+}
+.pandu-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--border-focus);
+}
+
+.pandu-letter {
+  font-size: 32px;
+  font-weight: 900;
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 6px;
+}
+
+.pandu-detail {
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+.pandu-detail strong {
+  color: var(--text-primary);
+}
+
+/* ==========================================================================
+   KALENDER KONTEN (Matriks Apple-style)
+   ========================================================================== */
+.cal-controls-row {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  margin-bottom: 20px;
+}
+
+.cal-matrix-scroll-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--shadow-sm);
+  margin-top: 16px;
+}
+
+.cal-grid-matrix {
+  display: grid;
+  grid-template-columns: 80px repeat(7, minmax(115px, 1fr));
+  min-width: 880px;
+  background: var(--surface-card);
+}
+
+.cm-cell {
+  border-right: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  min-height: 96px;
+  padding: 8px;
+  font-size: 12px;
+  line-height: 1.4;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  transition: background 0.15s ease;
+  position: relative;
+}
+
+.cm-header-cell {
+  min-height: 0;
+  padding: 12px 6px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 12.5px;
+  letter-spacing: 0.5px;
+  background: var(--surface-glass);
+  color: var(--text-primary);
+  border-bottom: 2px solid var(--border-glass);
+}
+
+.cm-header-time {
+  background: var(--emerald-tint);
+  color: var(--text-gold);
+}
+
+.cm-header-sat {
+  color: #fca5a5;
+  background: rgba(239, 68, 68, 0.08);
+}
+.cm-header-sun {
+  color: #f87171;
+  background: rgba(239, 68, 68, 0.12);
+}
+
+.cm-week-label {
+  background: var(--surface-glass);
+  color: var(--text-gold);
+  font-weight: 800;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.cm-date-num {
+  font-weight: 800;
+  font-size: 14px;
+  color: var(--text-primary);
+  display: block;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.cm-plan-box {
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.35;
+  color: var(--text-secondary);
+  text-align: center;
+  margin-top: 2px;
+}
+
+.cm-cell-hasplan {
+  background: var(--cal-hasplan-bg);
+}
+.cm-cell-hasplan .cm-date-num {
+  color: var(--text-gold);
+}
+
+.cm-cell-today {
+  background: var(--cal-today-bg) !important;
+  border: 1px solid #10b981;
+}
+.cm-cell-today .cm-date-num, .cm-cell-today .cm-plan-box {
+  color: var(--cal-today-text) !important;
+  font-weight: 700;
+}
+
+.cm-cell-out {
+  background: var(--cal-outside-bg);
+  opacity: 0.3;
+}
+
+.cm-cell-edit-btn {
+  align-self: center;
+  margin-top: auto;
+  background: rgba(245, 215, 127, 0.12);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-gold);
+  border-radius: var(--radius-pill);
+  font-size: 10px;
+  font-weight: 600;
+  padding: 3px 10px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.cm-cell-edit-btn:hover {
+  background: var(--gold-gradient);
+  color: #062412;
+}
+
+.cm-plan-box[contenteditable="true"] {
+  outline: 2px dashed var(--border-focus);
+  background: rgba(245, 215, 127, 0.15);
+  border-radius: 6px;
+  cursor: text;
+  min-height: 24px;
+  padding: 4px;
+}
+
+/* ==========================================================================
+   RAMBU-RAMBU & KALIMAT PERISAI (Sheet Banner)
+   ========================================================================== */
+.rambu-banner {
+  background: var(--surface-glass);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  margin-bottom: 22px;
+  box-shadow: var(--shadow-sm);
+}
+
+.rambu-banner summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--text-gold);
+  font-size: 14.5px;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.rambu-banner summary::-webkit-details-marker {
+  display: none;
+}
+
+.rambu-badge-req {
+  background: var(--gold-gradient);
+  color: #062412;
+  font-size: 11px;
+  font-weight: 800;
+  border-radius: var(--radius-pill);
+  padding: 4px 12px;
+}
+
+.rambu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.rambu-cell {
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.rambu-no {
+  background: var(--danger-bg);
+  border: 1px solid var(--danger-border);
+  color: var(--text-primary);
+}
+.rambu-no b {
+  color: var(--danger-text);
+  font-size: 11.5px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.rambu-yes {
+  background: var(--success-bg);
+  border: 1px solid var(--success-border);
+  color: var(--text-primary);
+}
+.rambu-yes b {
+  color: var(--success-text);
+  font-size: 11.5px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.rambu-cell ul {
+  padding-left: 18px;
+}
+.rambu-cell li {
+  margin-bottom: 6px;
+}
+
+/* ==========================================================================
+   APPLE FLOATING DOCK (MOBILE BOTTOM BAR)
+   ========================================================================== */
+.apple-mobile-dock {
+  display: none;
+  position: fixed;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--surface-glass);
+  backdrop-filter: blur(28px) saturate(200%);
+  -webkit-backdrop-filter: blur(28px) saturate(200%);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-pill);
+  padding: 6px 10px;
+  box-shadow: var(--shadow-dock);
+  z-index: var(--z-nav);
+  gap: 6px;
+  width: calc(100% - 32px);
+  max-width: 420px;
+  justify-content: space-around;
+}
+
+.dock-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all 0.2s var(--ease-apple);
+  gap: 3px;
+  flex: 1;
+}
+
+.dock-btn svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+}
+
+.dock-btn.active {
+  background: var(--gold-gradient);
+  color: #062412;
+  font-weight: 700;
+}
+.dock-btn.active svg {
+  stroke: #062412;
+}
+
+/* ==========================================================================
+   DYNAMIC ISLAND / PILL TOAST
+   ========================================================================== */
+.dynamic-toast {
+  position: fixed;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-100px);
+  background: var(--surface-glass);
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
+  border: 1px solid var(--border-focus);
+  color: var(--text-gold);
+  font-weight: 700;
+  font-size: 14px;
+  padding: 12px 24px;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+  transition: transform 0.4s var(--ease-spring), opacity 0.3s ease;
+  opacity: 0;
+  z-index: var(--z-toast);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dynamic-toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+/* Floating Action Pill for Rambu */
+.rambu-floating-pill {
+  position: fixed;
+  right: 20px;
+  bottom: 86px;
+  background: var(--surface-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-glass);
+  color: var(--text-gold);
+  border-radius: var(--radius-pill);
+  padding: 10px 18px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  z-index: var(--z-floating);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.25s var(--ease-apple);
+}
+.rambu-floating-pill:hover {
+  background: var(--surface-glass-hover);
+  border-color: var(--border-focus);
+  transform: translateY(-2px);
+}
+
+/* Panels */
+.tab-panel {
+  display: none;
+}
+.tab-panel.active {
+  display: block;
+  animation: fadeIn 0.25s var(--ease-apple);
+}
+
+/* Footer */
+footer.app-footer {
+  text-align: center;
+  padding-top: 32px;
+  border-top: 1px solid var(--border-subtle);
+  font-size: 12.5px;
+  color: var(--text-tertiary);
+  line-height: 1.7;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (Mobile & Tablet)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .app-container {
+    padding: 16px 14px 100px;
+  }
+  .glass-card {
+    padding: 20px 16px;
+    border-radius: var(--radius-md);
+  }
+  .hero-header {
+    padding: 16px 8px 24px;
+  }
+  .segmented-nav-wrapper {
+    display: none; /* di mobile diganti dengan Apple Bottom Dock */
+  }
+  .apple-mobile-dock {
+    display: flex;
+  }
+  .rambu-floating-pill {
+    bottom: 82px;
+    right: 14px;
+    font-size: 11px;
+    padding: 8px 14px;
+  }
+}
+
+/* Print Styles */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #111111 !important;
+  }
+  .apple-mobile-dock, .top-action-bar, .segmented-nav-wrapper, .theme-toggle-btn,
+  .rambu-floating-pill, .btn-primary-apple, .copy-action-bar, footer.app-footer, .cm-cell-edit-btn {
+    display: none !important;
+  }
+  .glass-card {
+    background: transparent !important;
+    border: 1px solid #cccccc !important;
+    box-shadow: none !important;
+  }
+  .tab-panel {
+    display: block !important;
+  }
+  .cal-grid-matrix {
+    border-color: #333333 !important;
+  }
+  .cm-cell {
+    background: #ffffff !important;
+    color: #111111 !important;
+    border-color: #dddddd !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="dynamic-toast" id="dynamicToast">
+  <span>✓</span> <span id="toastMsg">Tersalin ke Clipboard</span>
+</div>
+
+<div class="app-container">
+
+  <!-- TOP ACTION BAR: Brandmark & Theme Switcher -->
+  <div class="top-action-bar">
+    <div class="brand-badge">
+      <span>✦</span> Langgam.id × Dikdasmen PWM Sumbar
+    </div>
+    <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Ganti Tema">
+      <span id="themeIcon">☀️</span>
+      <span id="themeLabel">Light Mode</span>
+    </button>
+  </div>
+
+  <!-- HERO SECTION -->
+  <header class="hero-header">
+    <h1 class="hero-title">Prompt Kit <em>Humas Sekolah Muhammadiyah</em></h1>
+    <p class="hero-subtitle">Generator prompt cerdas berbasis formula PANDU untuk tim kehumasan sekolah — membuat orang tua calon murid yakin mendaftar. Hasil AI wajib diverifikasi manusia <em>(Human-in-the-Loop)</em>.</p>
+  </header>
+
+  <!-- APPLE SEGMENTED CONTROL (Desktop) -->
+  <nav class="segmented-nav-wrapper">
+    <div class="segmented-control" role="tablist">
+      <button class="seg-item active" data-tab="gen" role="tab">
+        <span>⚡</span> Generator Prompt
+      </button>
+      <button class="seg-item" data-tab="lib" role="tab">
+        <span>📚</span> Library Prompt
+      </button>
+      <button class="seg-item" data-tab="pandu" role="tab">
+        <span>🧭</span> Formula PANDU
+      </button>
+      <button class="seg-item" data-tab="kal" role="tab">
+        <span>📅</span> Kalender Konten
+      </button>
+    </div>
+  </nav>
+
+  <!-- ==========================================================================
+       TAB 1: GENERATOR PROMPT
+       ========================================================================== -->
+  <section class="tab-panel active" id="panel-gen">
+    
+    <!-- RAMBU-RAMBU ACCORDION BANNER -->
+    <details class="rambu-banner" id="genRambuBanner">
+      <summary>
+        <span>⚠️ Rambu-Rambu &amp; Larangan Pembuatan Prompt</span>
+        <span class="rambu-badge-req">WAJIB DIPATUHI</span>
+      </summary>
+      <div class="rambu-grid">
+        <div class="rambu-cell rambu-no">
+          <b>🚫 JANGAN PERNAH</b>
+          <ul>
+            <li><strong>Mengarang fakta:</strong> Jangan minta AI membuat angka prestasi, jumlah siswa, atau testimoni fiktif.</li>
+            <li><strong>Memasukkan data pribadi sensitif:</strong> NIK, nomor HP orang tua/siswa, alamat rumah, atau data medis.</li>
+            <li><strong>Mengunggah foto siswa tanpa izin orang tua</strong> atau mempublikasikan nama lengkap + lokasi rumah.</li>
+            <li><strong>Klaim hiperbolis:</strong> "Sekolah nomor 1 se-Indonesia" tanpa sertifikasi resmi.</li>
+            <li><strong>Menyinggung SARA &amp; Politik</strong> atau menjelekkan sekolah lain.</li>
+          </ul>
+        </div>
+        <div class="rambu-cell rambu-yes">
+          <b>✅ SELALU LAKUKAN</b>
+          <ul>
+            <li><strong>Sertakan bahan nyata:</strong> Masukkan data faktual (nama acara, tanggal, pembina, prestasi).</li>
+            <li><strong>Tuliskan batasan tegas pada prompt:</strong> Larang AI berhalusinasi.</li>
+            <li><strong>Junjung nilai KeMuhammadiyahan:</strong> Adab Islami, sopan santun, dan busana rapi.</li>
+            <li><strong>Bintangnya siswa:</strong> Fokuskan konten pada tumbuh kembang anak, bukan seremonial protokoler.</li>
+            <li><strong>Kurasi manusia (Human-in-the-Loop):</strong> Selalu tinjau dan edit draf sebelum dipublikasi.</li>
+          </ul>
+        </div>
+      </div>
+    </details>
+
+    <div class="glass-card">
+      <h2 class="card-title"><span>⚡</span> Buat Prompt Siap Pakai</h2>
+      <p class="card-desc">Lengkapi 5 langkah di bawah untuk menyusun prompt presisi. Salin ke Gemini atau ChatGPT, lalu tinjau draf hasilnya sebelum tayang.</p>
+
+      <div class="form-group">
+        <label class="field-label">1 · Jenis Konten</label>
+        <select class="select-control" id="gjenis">
+          <option value="rekap">Rekap Kegiatan Sekolah (Storytelling Proses Belajar)</option>
+          <option value="prestasi">Prestasi Siswa (Apresiasi Perjuangan &amp; Doa)</option>
+          <option value="profilguru">Profil Guru / Wajah Sekolah (Humanis &amp; Terpercaya)</option>
+          <option value="ppdb">Promosi PPDB / Pendaftaran (Menjawab Keraguan Ortu)</option>
+          <option value="aktivitas">Aktivitas Harian Siswa (Keseharian Positif)</option>
+          <option value="testimoni">Testimoni Orang Tua (Social Proof Terjaga Privasi)</option>
+          <option value="haribesar">Ucapan Hari Besar Islam / Nasional</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="field-label">2 · Platform Publikasi</label>
+        <select class="select-control" id="gplat">
+          <option value="ig">Instagram (Feed/Carousel: Hook 8 kata + Caption + Hashtag)</option>
+          <option value="tiktok">TikTok / Reels (Script Video 30–45 detik + Hook 3 detik)</option>
+          <option value="wa">WhatsApp Broadcast (Grup Orang Tua: Ringkas, Personal &amp; Hangat)</option>
+        </select>
+      </div>
+
+      <div class="grid-2col form-group">
+        <div>
+          <label class="field-label">3 · Nama Sekolah</label>
+          <input type="text" class="input-control" id="gsekolah" placeholder="cth: SD Muhammadiyah Parakan">
+        </div>
+        <div>
+          <label class="field-label">Kota / Daerah</label>
+          <input type="text" class="input-control" id="gkota" placeholder="cth: Padang, Sumatera Barat">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="field-label">4 · Fakta Kegiatan (Tulis Faktual Apa Adanya)</label>
+        <textarea class="textarea-control" id="gfakta" rows="3" placeholder="cth: 15 siswa kelas 5 berhasil khatam juz 30 dalam program Tasmi' Al-Qur'an hari Sabtu kemarin di hadapan orang tua dan pembina Ustadz Ahmad."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label class="field-label">5 · Nilai Khas Unggulan (Boleh Pilih Lebih dari Satu)</label>
+        <div class="chip-group" id="gnilai">
+          <button type="button" class="apple-chip" data-v="Tahfidz &amp; Karakter Qur'ani">📖 Tahfidz Al-Qur'an</button>
+          <button type="button" class="apple-chip" data-v="Sains &amp; Literasi Digital">🔬 Sains &amp; Teknologi</button>
+          <button type="button" class="apple-chip" data-v="Pengembangan Minat &amp; Bakat Siswa">🎨 Bakat &amp; Minat</button>
+          <button type="button" class="apple-chip" data-v="Kemandirian &amp; Kewirausahaan">🌱 Wirausaha Cilik</button>
+          <button type="button" class="apple-chip" data-v="Adab &amp; Akhlakul Karimah Harian">🕌 Adab &amp; Karakter</button>
+        </div>
+      </div>
+
+      <div class="form-group" style="margin-top: 22px;">
+        <label class="field-label">Opsi Tone &amp; Kearifan Lokal</label>
+        <div class="chip-group">
+          <button type="button" class="apple-chip" id="gminang" data-on="0">
+            🌿 Sentuhan Minangkabau (Pepatah-Petitih &amp; Nilai ABS-SBK)
+          </button>
+        </div>
+      </div>
+
+      <button type="button" class="btn-primary-apple" id="gbuat">
+        <span>✨</span> GENERATE PROMPT SAYA
+      </button>
+
+      <!-- HASIL GENERATOR -->
+      <div class="result-container" id="gres">
+        <div class="terminal-box">
+          <div class="terminal-header">
+            <div class="mac-dots">
+              <span class="mac-dot dot-red"></span>
+              <span class="mac-dot dot-yellow"></span>
+              <span class="mac-dot dot-green"></span>
+            </div>
+            <span class="terminal-title">PROMPT SIAP DIGUNAKAN</span>
+            <span style="font-size:11px;opacity:0.6;">Formula PANDU</span>
+          </div>
+          <div class="prompt-text-output" id="gout"></div>
+        </div>
+        <div class="copy-action-bar">
+          <button type="button" class="btn-copy-main" id="gsalin">
+            <span>📋</span> Salin Seluruh Prompt
+          </button>
+          <button type="button" class="btn-apple-secondary" id="greset">
+            <span>↺</span> Reset Form
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       TAB 2: LIBRARY PROMPT
+       ========================================================================== -->
+  <section class="tab-panel" id="panel-lib">
+    <div class="glass-card">
+      <h2 class="card-title"><span>📚</span> Library Prompt Siap Pakai</h2>
+      <p class="card-desc">Template teruji untuk ragam kebutuhan kehumasan sekolah. Buka template, sesuaikan bagian <code>[DALAM KURUNG]</code>, salin, dan terapkan.</p>
+
+      <div class="search-library-wrapper">
+        <input type="text" class="input-control" id="libSearchInput" placeholder="🔍 Cari template prompt (cth: Kompas, carousel, krisis, video, PPDB)...">
+      </div>
+
+      <!-- Kategori Filter Chips -->
+      <div class="chip-group" id="libCategoryFilter" style="margin-bottom: 20px;">
+        <button type="button" class="apple-chip active" data-cat="all">Semua Template</button>
+        <button type="button" class="apple-chip" data-cat="Media">Media &amp; Rilis</button>
+        <button type="button" class="apple-chip" data-cat="Instagram">Instagram</button>
+        <button type="button" class="apple-chip" data-cat="TikTok">TikTok / Reels</button>
+        <button type="button" class="apple-chip" data-cat="WhatsApp">WhatsApp</button>
+        <button type="button" class="apple-chip" data-cat="Manajemen">Manajemen &amp; Krisis</button>
+      </div>
+
+      <div id="liblistContainer"></div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       TAB 3: FORMULA PANDU
+       ========================================================================== -->
+  <section class="tab-panel" id="panel-pandu">
+    <div class="glass-card">
+      <h2 class="card-title"><span>🧭</span> Kerangka Formula PANDU</h2>
+      <p class="card-desc">Formula terstruktur agar instruksi AI menghasilkan tulisan berbobot, bernas, dan bebas dari kalimat klise.</p>
+
+      <div class="pandu-grid">
+        <div class="pandu-card">
+          <div class="pandu-letter">P</div>
+          <div class="pandu-detail"><strong>Peran</strong> — Tetapkan persona AI: spesialis copywriter humas sekolah Islam modern yang memahami psikologi orang tua.</div>
+        </div>
+        <div class="pandu-card">
+          <div class="pandu-letter">A</div>
+          <div class="pandu-detail"><strong>Audiens</strong> — Kunci target pembaca: orang tua calon siswa usia 28–45 tahun yang memprioritaskan rasa aman &amp; akhlak.</div>
+        </div>
+        <div class="pandu-card">
+          <div class="pandu-letter">N</div>
+          <div class="pandu-detail"><strong>Niat</strong> — Tegaskan objektif konten: mengedukasi program, membangun simpati, atau mengajak konsultasi PPDB.</div>
+        </div>
+        <div class="pandu-card">
+          <div class="pandu-letter">D</div>
+          <div class="pandu-detail"><strong>Detail</strong> — Bekali AI dengan fakta nyata: nama sekolah, nama kegiatan, tanggal, capaian, dan proses siswa.</div>
+        </div>
+        <div class="pandu-card">
+          <div class="pandu-letter">U</div>
+          <div class="pandu-detail"><strong>Untukan Format</strong> — Batasan output: panjang kata, platform, tone ramah, CTA jelas, serta larangan hiperbola.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="glass-card">
+      <h2 class="card-title"><span>🎯</span> 4 Sudut Pandang Utama Orang Tua</h2>
+      <p class="card-desc">Saat memilih sekolah, orang tua mempertimbangkan 4 hal krusial berikut. Pastikan konten Anda menjawabnya:</p>
+
+      <div class="pandu-grid">
+        <div class="pandu-card">
+          <div class="pandu-letter">🛡️</div>
+          <div class="pandu-detail"><strong>Rasa Aman</strong><br>Lingkungan ramah anak, pengawasan guru berdedikasi, bebas perundungan <em>(bullying)</em>, dan ekosistem adab terjaga.</div>
+        </div>
+        <div class="pandu-card">
+          <div class="pandu-letter">📈</div>
+          <div class="pandu-detail"><strong>Mutu Pembelajaran</strong><br>Bukan sekadar nilai angka, melainkan proses belajar interaktif dan pendampingan potensi unik anak.</div>
+        </div>
+        <div class="pandu-card">
+          <div class="pandu-letter">🕌</div>
+          <div class="pandu-detail"><strong>Karakter &amp; Ibadah</strong><br>Pembiasaan sholat berjamaah, hafalan Al-Qur'an mandiri, serta adab sopan santun terhadap guru dan orang tua.</div>
+        </div>
+        <div class="pandu-card">
+          <div class="pandu-letter">💰</div>
+          <div class="pandu-detail"><strong>Nilai Investasi Biaya</strong><br>Transparan dan sepadan. Tunjukkan kualitas fasilitas dan pengalaman berharga anak, bukan sekadar diskon biaya.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       TAB 4: KALENDER KONTEN (TIMELINE MATRIKS)
+       ========================================================================== -->
+  <section class="tab-panel" id="panel-kal">
+    <div class="glass-card">
+      <h2 class="card-title"><span>📅</span> Kalender &amp; Timeline Konten Bulanan</h2>
+      <p class="card-desc">Grid matriks editorial sebulan penuh. Seluruh rencana disusun berdasarkan alur pemasaran pendidikan (Awareness → Consideration → Conversion). Klik <strong>Edit</strong> pada sel tanggal mana pun untuk kustomisasi.</p>
+
+      <div class="cal-controls-row">
+        <div>
+          <label class="field-label">Bulan</label>
+          <select class="select-control" id="kbulan"></select>
+        </div>
+        <div>
+          <label class="field-label">Tahun</label>
+          <select class="select-control" id="ktahun"></select>
+        </div>
+        <div>
+          <label class="field-label">Frekuensi Posting</label>
+          <select class="select-control" id="kfrek">
+            <option value="7">Setiap Hari (7 Hari Penuh)</option>
+            <option value="5" selected>5 Hari Kerja (Senin–Jumat)</option>
+            <option value="3">3 Hari Unggulan (Selasa, Jumat, Minggu)</option>
+          </select>
+        </div>
+        <div style="flex: 1; min-width: 220px;">
+          <label class="field-label">Nama Sekolah</label>
+          <input type="text" class="input-control" id="ksekolah" placeholder="cth: SD Muhammadiyah Parakan">
+        </div>
+      </div>
+
+      <button type="button" class="btn-primary-apple" id="kbuat">
+        <span>🗓️</span> SUSUN TIMELINE KONTEN BULANAN
+      </button>
+
+      <!-- HASIL KALENDER -->
+      <div id="kalout" style="display:none; margin-top: 28px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:14px;">
+          <h3 id="kaltitle" style="font-size:20px; font-weight:800; color:var(--text-gold);"></h3>
+          <div style="display:flex; gap:8px;">
+            <button type="button" class="btn-apple-secondary" id="ksalinsemua">📋 Salin Seluruh Jadwal</button>
+            <button type="button" class="btn-apple-secondary" onclick="window.print()">🖨️ Cetak / PDF</button>
+          </div>
+        </div>
+
+        <div class="cal-matrix-scroll-wrapper">
+          <div class="cal-grid-matrix" id="kalmatrix"></div>
+        </div>
+
+        <div style="display:flex; gap:16px; flex-wrap:wrap; margin-top:14px; font-size:12px; color:var(--text-secondary);">
+          <span><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:rgba(245,215,127,0.4);margin-right:4px;"></span>Ada Rencana</span>
+          <span><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#10b981;margin-right:4px;"></span>Hari Ini</span>
+          <span><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:rgba(239,68,68,0.3);margin-right:4px;"></span>Akhir Pekan</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="app-footer">
+    <p><strong>Prompt Kit Humas Sekolah Muhammadiyah</strong> · Langgam.id × Majelis Dikdasmen PWM Sumatera Barat</p>
+    <p style="margin-top: 4px; font-size: 11.5px; opacity: 0.8;">Didukung AI secara etis dan bertanggung jawab. Jadikan AI sebagai akselerator draf — keputusan akhir selalu berada di tangan Humas Sekolah.</p>
+  </footer>
+
+</div>
+
+<!-- FLOATING RAMBU BUTTON (Untuk kemudahan akses cepat) -->
+<button class="rambu-floating-pill" id="floatingRambuBtn" title="Buka Rambu-Rambu &amp; Larangan">
+  <span>⚠️</span> Rambu Humas
+</button>
+
+<!-- APPLE MOBILE DOCK (Fixed Bottom Navigation) -->
+<div class="apple-mobile-dock" role="navigation">
+  <button class="dock-btn active" data-tab="gen">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+    <span>Generator</span>
+  </button>
+  <button class="dock-btn" data-tab="lib">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+    <span>Library</span>
+  </button>
+  <button class="dock-btn" data-tab="pandu">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+    <span>PANDU</span>
+  </button>
+  <button class="dock-btn" data-tab="kal">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    <span>Kalender</span>
+  </button>
+</div>
+
+<!-- ==========================================================================
+     APPLICATION LOGIC & DATA
+     ========================================================================== -->
+<script>
+(function(){
+  "use strict";
+
+  /* ------------------- THEME SWITCHER (Light / Dark) ------------------- */
+  var themeToggleBtn = document.getElementById("themeToggleBtn");
+  var themeIcon = document.getElementById("themeIcon");
+  var themeLabel = document.getElementById("themeLabel");
+
+  function applyTheme(theme) {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("pk_theme_pref", theme);
+    if(theme === "light"){
+      themeIcon.textContent = "🌙";
+      themeLabel.textContent = "Dark Mode";
+    } else {
+      themeIcon.textContent = "☀️";
+      themeLabel.textContent = "Light Mode";
+    }
+  }
+
+  var savedTheme = localStorage.getItem("pk_theme_pref") || 
+    (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+  applyTheme(savedTheme);
+
+  themeToggleBtn.addEventListener("click", function(){
+    var current = document.documentElement.getAttribute("data-theme") || "dark";
+    applyTheme(current === "dark" ? "light" : "dark");
+  });
+
+  /* ------------------- TOAST NOTIFICATION ------------------- */
+  var toastTimer = null;
+  function showToast(msg) {
+    var toast = document.getElementById("dynamicToast");
+    var toastMsg = document.getElementById("toastMsg");
+    toastMsg.textContent = msg || "Tersalin ke Clipboard";
+    toast.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){
+      toast.classList.remove("show");
+    }, 2200);
+  }
+
+  function copyText(text, successMsg) {
+    if(navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function(){
+        showToast(successMsg);
+      });
+    } else {
+      var ta = document.createElement("textarea");
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand("copy");
+        showToast(successMsg);
+      } catch(e){}
+      document.body.removeChild(ta);
+    }
+  }
+
+  /* ------------------- TAB NAVIGATION ------------------- */
+  var segBtns = document.querySelectorAll(".seg-item");
+  var dockBtns = document.querySelectorAll(".dock-btn");
+  var panels = document.querySelectorAll(".tab-panel");
+
+  function switchTab(tabId) {
+    segBtns.forEach(function(b){
+      b.classList.toggle("active", b.getAttribute("data-tab") === tabId);
+    });
+    dockBtns.forEach(function(b){
+      b.classList.toggle("active", b.getAttribute("data-tab") === tabId);
+    });
+    panels.forEach(function(p){
+      p.classList.toggle("active", p.id === "panel-" + tabId);
+    });
+    window.scrollTo({top: 0, behavior: "smooth"});
+  }
+
+  segBtns.forEach(function(b){
+    b.addEventListener("click", function(){ switchTab(b.getAttribute("data-tab")); });
+  });
+  dockBtns.forEach(function(b){
+    b.addEventListener("click", function(){ switchTab(b.getAttribute("data-tab")); });
+  });
+
+  // Floating Rambu button opens the rambu banner
+  document.getElementById("floatingRambuBtn").addEventListener("click", function(){
+    switchTab("gen");
+    var banner = document.getElementById("genRambuBanner");
+    if(banner){
+      banner.open = true;
+      banner.scrollIntoView({behavior: "smooth", block: "start"});
+    }
+  });
+
+  /* ------------------- TAB 1: GENERATOR LOGIC ------------------- */
+  var JENIS_DATA = {
+    rekap: {
+      role: "copywriter humas sekolah Islam modern yang piawai bercerita (storyteller pendidikan)",
+      task: "buat draf konten rekap kegiatan sekolah yang hangat dan menyentuh, sehingga orang tua calon murid merasa bangga dan yakin anaknya bertumbuh di lingkungan yang suportif dan terawasi"
+    },
+    prestasi: {
+      role: "spesialis branding sekolah Islam",
+      task: "buat narasi apresiasi prestasi siswa yang memuliakan PROSES belajarnya (latihan disiplin, doa, dukungan guru pembina, dan peran orang tua), bukan semata-mata hasil pialanya"
+    },
+    profilguru: {
+      role: "storyteller human-interest pendidikan",
+      task: "buat tulisan profil guru yang humanis, bersahabat, dan berdedikasi, untuk menumbuhkan rasa percaya orang tua bahwa putra-putrinya berada di bawah bimbingan guru yang tulus"
+    },
+    ppdb: {
+      role: "copywriter pemasaran pendidikan yang etis, jujur, dan solutif",
+      task: "buat materi promosi PPDB (soft-selling) yang lugas menjawab keraguan dan kekhawatiran orang tua (lingkungan aman, mutu terjamin, karakter islami, dan biaya transparan) tanpa menjelekkan pihak lain"
+    },
+    aktivitas: {
+      role: "kreator konten kehumasan sekolah",
+      task: "buat draf aktivitas harian siswa yang memvisualkan suasana belajar menyenangkan, penuh adab, dan bermakna sehingga orang tua dapat membayangkan keseharian anaknya di sekolah ini"
+    },
+    testimoni: {
+      role: "copywriter humas sekolah",
+      task: "buat narasi social-proof berdasarkan ungkapan kepuasan orang tua (parafase santun, jaga privasi tanpa mencantumkan identitas pribadi anak secara berlebihan)"
+    },
+    haribesar: {
+      role: "copywriter humas sekolah Islam",
+      task: "buat ucapan peringatan hari besar yang menginspirasi, edukatif, dan dikaitkan erat dengan pembiasaan budi pekerti di sekolah"
+    }
+  };
+
+  var PLAT_DATA = {
+    ig: "Platform: Instagram feed & carousel. Format: hook visual-tekstual kuat di baris pertama (maksimal 8 kata), isi cerita padat 60–100 kata, CTA ajakan konsultasi/kunjungan, serta 15–20 hashtag relevan (kombinasi nama kota, pendidikan Islam, dan Muhammadiyah).",
+    tiktok: "Platform: TikTok / Reels (Video Pendek 30–45 detik). Format: naskah terbagi atas 3 detik pertama (hook menghentikan scroll), alur adegan visual per detik, teks overlay di layar, voice-over ringkas, dan CTA penutup.",
+    wa: "Platform: WhatsApp Broadcast Grup Orang Tua. Format: pesan 80–120 kata, santun, ramah, gunakan poin-poin jelas dan emoji terukur, serta 1 CTA tunggal yang jelas."
+  };
+
+  // Nilai chips toggle
+  document.getElementById("gnilai").addEventListener("click", function(e){
+    if(e.target.classList.contains("apple-chip")){
+      e.target.classList.toggle("active");
+    }
+  });
+
+  // Minang tone toggle
+  var minangBtn = document.getElementById("gminang");
+  minangBtn.addEventListener("click", function(){
+    var state = minangBtn.getAttribute("data-on") === "1";
+    minangBtn.setAttribute("data-on", state ? "0" : "1");
+    minangBtn.classList.toggle("active", !state);
+  });
+
+  function generatePrompt() {
+    var j = document.getElementById("gjenis").value;
+    var p = document.getElementById("gplat").value;
+    var sk = document.getElementById("gsekolah").value.trim() || "[Nama Sekolah Muhammadiyah]";
+    var kt = document.getElementById("gkota").value.trim() || "[Kota / Daerah]";
+    var fk = document.getElementById("gfakta").value.trim() || "[Tulis fakta kegiatan: apa acaranya, siapa yang terlibat, kapan berlangsung, dan apa proses/hasilnya]";
+    
+    var selectedNilai = [];
+    document.querySelectorAll("#gnilai .apple-chip.active").forEach(function(c){
+      selectedNilai.push(c.getAttribute("data-v"));
+    });
+
+    var withMinang = minangBtn.getAttribute("data-on") === "1";
+    var cfg = JENIS_DATA[j];
+
+    var prompt = "Berperanlah sebagai " + cfg.role + ".\n\n";
+    prompt += "KONTEKS:\n";
+    prompt += "• Sekolah: " + sk + ", " + kt + " (Lembaga Pendidikan Muhammadiyah).\n";
+    prompt += "• Target Pembaca: Orang tua calon murid (usia 28–45 tahun) yang mendambakan lingkungan aman, mutu terukur, pembinaan karakter/adab, dan kepastian biaya.\n";
+    prompt += "• Fakta Nyata Kegiatan:\n  " + fk + "\n";
+    if(selectedNilai.length > 0){
+      prompt += "• Nilai Khas yang Diangkat: " + selectedNilai.join(", ") + ".\n";
+    }
+
+    prompt += "\nTUGAS UTAMA:\n" + cfg.task + ".\n\n";
+    prompt += "KETENTUAN OUTPUT:\n";
+    prompt += "• " + PLAT_DATA[p] + "\n";
+    prompt += "• Bahasa: Bahasa Indonesia yang santun, hangat, menginspirasi, dan bintang ceritanya adalah SISWA.\n";
+    prompt += "• CTA: Mengajak orang tua untuk bersilaturahmi atau berkonsultasi mengenai PPDB di " + sk + ".\n";
+    
+    if(withMinang){
+      prompt += "• Sentuhan Lokal: Sisipkan 1 pepatah-petitih Minangkabau yang kontekstual dan hubungkan dengan filosofi Adat Basandi Syarak, Syarak Basandi Kitabullah (ABS-SBK).\n";
+    }
+
+    prompt += "\n🛡️ KALIMAT PERISAI & RAMBU WAJIB:\n";
+    prompt += "1. Dilarang mengarang fakta, angka capaian, nama, atau testimoni fiktif di luar data di atas. Jika ada data kurang lengkap, tuliskan [CEK DATA].\n";
+    prompt += "2. Hindari klaim berlebihan ('terhebat', 'nomor satu se-provinsi') tanpa dasar bukti konkret.\n";
+    prompt += "3. Jangan gunakan perbandingan negatif terhadap sekolah lain.\n";
+    prompt += "4. Berikan 2 variasi draf (Opsi A: Lebih Emosional/Menyentuh Kalbu, Opsi B: Lebih Informatif & Terstruktur) agar saya dapat menyuntingnya dengan bijak.";
+
+    document.getElementById("gout").textContent = prompt;
+    var resBox = document.getElementById("gres");
+    resBox.classList.add("show");
+    resBox.scrollIntoView({behavior: "smooth", block: "nearest"});
+  }
+
+  document.getElementById("gbuat").addEventListener("click", generatePrompt);
+
+  document.getElementById("gsalin").addEventListener("click", function(){
+    copyText(document.getElementById("gout").textContent, "Prompt Berhasil Disalin! Siap Digunakan.");
+  });
+
+  document.getElementById("greset").addEventListener("click", function(){
+    document.getElementById("gres").classList.remove("show");
+    document.getElementById("gfakta").value = "";
+    document.querySelectorAll("#gnilai .apple-chip.active").forEach(function(c){
+      c.classList.remove("active");
+    });
+    minangBtn.setAttribute("data-on", "0");
+    minangBtn.classList.remove("active");
+  });
+
+  /* ------------------- TAB 2: LIBRARY PROMPTS ------------------- */
+  var BERITA_RILIS_PROMPT = 'Sesuaikan dengan pedoman menulis berikut ini:\n\nSaya adalah seorang Jurnalis untuk portal media Kompas.com. Saya akan meminta bantuan anda untuk mempercepat saya memproses publikasi pemberitaan.\n\nSeluruh pemberitaan kompas.com berpedoman kepada UU Nomor 40 Tahun 1999 tentang Pers, Kode Etik Jurnalistik dan Pedoman Pemberitaan Media Siber yang diterbitkan Dewan Pers serta kaidah jurnalisme yang berlaku universal.\n\nkompas.com mendahulukan empati, tidak mengumbar sensasi, serta memperhatikan dampak pemberitaan yang bisa terjadi pada seorang korban dalam pemberitaan.\n\nKarena mendahulukan empati, maka pilihan diksi yang dipakai harus diperhatikan. Contoh, kompas.com pada umumnya tidak menggunakan diksi "tewas" untuk korban yang meninggal dunia karena bencana, kecelakaan atau korban kejahatan, tapi: "meninggal dunia" atau "meninggal".\n\nkompas.com mempertimbangkan prinsip-prinsip hak asasi manusia (HAM), demokrasi, hukum serta kearifan lokal dalam pemberitaannya.\n\nDalam membantu saya, perhatikan pedoman-pedoman berikut;\n- Jangan ubah fakta dan data dalam artikel\n- Masukan kata kunci di judul, paragraf pertama, isi dan paragraf terakhir\n- Buat dengan gaya bahasa kompas.com\n- Jangan beropini.\n- Jangan rubah kutipan dalam artikel.\n- Ambil angle yang paling menarik.\n- Buat kata kunci relevan dengan artikel.\n- Pastikan artikel ditulis 380 atau lebih kata.\n- Pahami sedetail-detailnya draft yang akan saya bagikan berikut ini;\n- Edit, parafrase, dan tulis ulang berita yang saya bagikan berikut ini;\n- Seluruh berita kompas.com ditulis sesuai kaidah Bahasa Indonesia yang baik dan benar;\n- Redaksi kompas.com mempedomani Kamus Besar Bahasa Indonesia, kecuali untuk diksi tertentu dengan pertimbangan rasa bahasa atau pilihan kata yang lebih hidup di tengah masyarakat;\n- Seluruh berita kompas.com diawali dengan kompas.com (dengan tulisan yang ditebalkan) setelah judul;\n- Satu kalimat upayakan ditulis maksimal 20 kata;\n- Terapkan prinsip Ekonomi Bahasa dalam menulis berita;\n- Satu paragraf upayakan minimal terdiri dari dua kalimat;\n- Menuliskan tempat, diikuti dengan nama nagari/kelurahan/desa, kecamatan dan kemudian nama kabupaten/kota;\n- Penulisan waktu di awal hari, diikuti dalam tanda kurung tanggal, bulan dan tahun yang dipisahkan garis miring. Contoh: Minggu (02/08/2020);\n- Berita yang diisi di dalam situs kompas.com, harus memenuhi syarat-syarat SEO yang baik secara teknis;\n- Pilihkan angle terbaik dari berita yang akan anda tulis di bawah;\n- Buatkan judul terbaik dari berita yang akan anda tulis di bawah;\n- Pertahankan substansi isi tulisan dari draft yang akan anda jadikan berita di bawah;\n- Gunakan Gaya dan Bahasa yang biasa digunakan dalam jurnalisme oleh wartawan/reporter;\n- Gunakan prinsip Piramida Terbalik (tulis dari informasi paling penting ke yang paling tak penting);\n- Gunakan prinsip 5W+1H;\n- Hindari menggunakan kata sifat atau klaim dalam berita;\n- Perhatikan nilai berita dari berita yang akan anda tulis;\n- Tulis berdasarkan kaidah-kaidah jurnalistik yang berlaku;\n- Tulis dengan detail dan presisi sesuai dengan draft yang saya bagikan di Bawah;\n- Pastikan artikel sesuai dengan ketentuan masuk discover google.\n\nPahami semua pedoman di atas!\n\n=== DRAFT / DATA BERITA SAYA (tempel di sini): ===\n[Tempel catatan kegiatan, rilis internal, atau data mentah berita di sini]';
+
+  var LIBRARY_ITEMS = [
+    {
+      id: "berita_rilis",
+      category: "Media",
+      badge: "Humas → Portal Media",
+      title: "📰 Berita Rilis — Kaidah Jurnalistik Kompas.com & Dewan Pers",
+      desc: "Ubah draf kegiatan sekolah menjadi siaran berita siap tayang di media online. Menanamkan UU Pers No. 40/1999, Kode Etik Jurnalistik, format piramida terbalik, diksi empati, hingga standar SEO Google Discover.",
+      prompt: BERITA_RILIS_PROMPT,
+      hasDraftEditor: true
+    },
+    {
+      category: "Instagram",
+      badge: "Instagram Carousel",
+      title: "🖼️ Carousel Rekap Kegiatan 7 Slide",
+      desc: "Struktur visual untuk postingan multi-slide di feed Instagram: Slide 1 hook, Slide 2–6 cerita proses belajar anak, Slide 7 ajakan silaturahmi PPDB.",
+      prompt: "Berperanlah sebagai desainer konten Instagram sekolah. Buatkan outline carousel 7 slide untuk merekap [NAMA KEGIATAN] di [NAMA SEKOLAH].\nSlide 1: Judul hook yang memikat perhatian orang tua.\nSlide 2-6: Satu foto + satu kalimat cerita per momen (fokus pada ekspresi, kerjasama, dan proses siswa).\nSlide 7: CTA PPDB dan kontak sekolah.\nSertakan rekomendasi arahan foto (shot angle) untuk masing-masing slide."
+    },
+    {
+      category: "Instagram",
+      badge: "Prestasi Siswa",
+      title: "🏆 Caption Apresiasi Prestasi Siswa",
+      desc: "Menyoroti kerja keras dan doa di balik medali, membangun reputasi mutu sekolah tanpa terkesan sombong.",
+      prompt: "Buatkan caption Instagram dari data prestasi berikut: [NAMA SISWA/KELAS, PRESTASI, NAMA LOMBA, PENYELENGGARA, TANGGAL].\nTonjolkan proses: ketekunan latihan, bimbingan ustadz/ustadzah, dan ridho orang tua. Hook 8 kata pertama yang menyentuh. Tutup dengan ajakan menyekolahkan anak ke [NAMA SEKOLAH]. Sertakan 15 hashtag pendidikan dan kota [KOTA]."
+    },
+    {
+      category: "Instagram",
+      badge: "Storytelling Guru",
+      title: "👩‍🏫 Profil Guru & Wajah Sekolah yang Hangat",
+      desc: "Wawancara ringkas guru yang dikemas menjadi cerita inspiratif untuk mendekatkan pengajar dengan wali murid.",
+      prompt: "Ubah wawancara ringkas guru berikut: [NAMA GURU, MATA PELAJARAN/KELAS, PENGALAMAN, METODE MENGAJAR UNIK, MOTIVASI MENGAJAR] menjadi kisah storytelling 90 kata untuk Instagram.\nMulai dari kebiasaan kecil beliau saat menyambut murid di kelas (bukan daftar gelar akademik). Akhiri dengan kutipan hangat sang guru tentang mendidik anak dengan kasih sayang."
+    },
+    {
+      category: "WhatsApp",
+      badge: "WhatsApp Broadcast",
+      title: "💬 Siaran Pengumuman PPDB Ramah Wali Murid",
+      desc: "Pesan broadcast grup WA yang mengalir luwes, hangat, tidak kaku seperti brosur formal.",
+      prompt: "Buat draf pesan WhatsApp broadcast untuk grup wali murid tentang pembukaan PPDB [TAHUN AJARAN] di [NAMA SEKOLAH].\nSertakan: jalur pendaftaran, kuota yang tersedia, 3 keunggulan pembiasaan karakter utama, serta kontak admin pendaftaran.\nNada tulisan: ramah, penuh rasa kekeluargaan, panjang maksimal 110 kata dengan 1 CTA yang jelas."
+    },
+    {
+      category: "TikTok",
+      badge: "Video Pendek",
+      title: "🎬 5 Ide Hook Video TikTok / Reels Sekolah",
+      desc: "Gagasan kalimat pembuka 3 detik pertama agar orang tua tidak me-skip video pendek sekolah Anda.",
+      prompt: "Buatkan 5 ide hook video pendek (TikTok/Reels) untuk sekolah Muhammadiyah [NAMA SEKOLAH] yang membuat ORANG TUA langsung berhenti scroll dalam 3 detik pertama.\nFormat tiap ide: Kalimat lisan pertama + petunjuk visual adegan awal.\nTema: kemandirian siswa, suasana hafalan Al-Qur'an yang ceria, fasilitas belajar ramah anak, dan kedekatan guru dengan siswa. Hindari sensasi negatif."
+    },
+    {
+      category: "Manajemen",
+      badge: "SOP Lapangan",
+      title: "📋 Brief Tim Dokumentasi & Fotografer",
+      desc: "Panduan praktis bagi guru atau staf yang bertugas memotret saat acara sekolah berlangsung.",
+      prompt: "Buat checklist brief tugas dokumentasi untuk tim pelaksana/volunteer pada acara [NAMA KEGIATAN, TANGGAL].\nSertakan: 10 tipe pengambilan gambar wajib (ekspresi anak, interaksi guru-siswa, detail aktivitas, suasana jamaah), etika memotret anak, larangan mengunggah foto blur/tidak sopan, dan format penamaan file arsip."
+    },
+    {
+      category: "Manajemen",
+      badge: "Manajemen Krisis",
+      title: "🛡️ Pernyataan Klarifikasi Isu yang Tenang & Bijak",
+      desc: "Draf respons cepat saat sekolah menghadapi kesalahpahaman informasi di ranah publik.",
+      prompt: "Sekolah kami menghadapi isu/pertanyaan berikut di media sosial: [JELASKAN FAKTA SEBENARNYA].\nBuatkan draf pernyataan klarifikasi resmi sepanjang 100 kata untuk Instagram/Facebook: tenang, faktual, tidak menyerang siapa pun, menunjukkan langkah perbaikan nyata, dan membuka jalur komunikasi resmi. Nada tulisan: Kepala Sekolah yang bijak dan mengayomi."
+    },
+    {
+      category: "Instagram",
+      badge: "Kearifan Lokal",
+      title: "🌿 Caption Berpepatah Minangkabau & ABS-SBK",
+      desc: "Mengangkat khazanah adat Minang untuk memperkuat karakter anak didik.",
+      prompt: "Buatkan caption Instagram mengenai [TOPIK KEGIATAN SISWA] yang diawali pepatah Minangkabau relevan, kemudian dihubungkan secara santun dengan nilai Adat Basandi Syarak, Syarak Basandi Kitabullah yang diterapkan di [NAMA SEKOLAH]. Panjang maksimal 85 kata, hangat, dan diakhiri informasi kontak PPDB."
+    },
+    {
+      category: "Manajemen",
+      badge: "Audit Media Sosial",
+      title: "🔍 Evaluasi Bio & Tampilan Feed Instagram",
+      desc: "Mengevaluasi profil akun sekolah apakah sudah meyakinkan bagi orang tua yang baru berkunjung.",
+      prompt: "Berikut ini adalah bio akun Instagram sekolah kami: '[TEMPEL BIO]' dan 9 judul postingan terakhir: '[TEMPEL 9 JUDUL]'.\nBertindaklah sebagai konsultan komunikasi pendidikan: berikan skor 1-10 untuk kejelasan identitas sekolah bagi calon wali murid, kerapian pesan, dan kejelasan CTA. Berikan 3 rekomendasi perbaikan paling penting."
+    }
+  ];
+
+  var libraryDraftStore = {};
+
+  function getCombinedPrompt(item, draftText) {
+    var raw = item.prompt;
+    var draft = (draftText || "").trim();
+    if(item.hasDraftEditor && draft) {
+      return raw.replace("[Tempel catatan kegiatan, rilis internal, atau data mentah berita di sini]", draft);
+    }
+    return raw;
+  }
+
+  function renderLibrary(items) {
+    var container = document.getElementById("liblistContainer");
+    var html = "";
+    items.forEach(function(item, idx){
+      var draftVal = libraryDraftStore[idx] || "";
+      var compiledPrompt = getCombinedPrompt(item, draftVal);
+      var wordsCount = draftVal.trim() ? draftVal.trim().split(/\s+/).length : 0;
+
+      html += '<div class="library-item-card' + (item.hasDraftEditor ? ' has-editor' : '') + '" data-idx="' + idx + '">';
+      html += '  <span class="lib-badge">' + item.badge + '</span>';
+      html += '  <h3>' + item.title + '</h3>';
+      html += '  <p class="lib-desc">' + item.desc + '</p>';
+      
+      html += '  <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:4px;">';
+      if(item.hasDraftEditor) {
+        html += '    <button type="button" class="btn-apple-secondary lib-edit-btn" data-idx="' + idx + '" style="background:var(--gold-gradient);color:#062412;border:none;font-weight:700;">✏️ Edit / Tempel Draf Kasar</button>';
+      }
+      html += '    <button type="button" class="btn-apple-secondary lib-toggle-btn" data-idx="' + idx + '">🔍 ' + (item.hasDraftEditor ? 'Buka Pedoman Lengkap' : 'Buka Template') + '</button>';
+      html += '    <button type="button" class="btn-apple-secondary lib-copy-btn" data-idx="' + idx + '" style="' + (item.hasDraftEditor ? '' : 'background:var(--gold-gradient);color:#062412;border:none;') + '">📋 ' + (item.hasDraftEditor ? 'Salin Template Kosong' : 'Salin') + '</button>';
+      html += '  </div>';
+
+      if(item.hasDraftEditor) {
+        html += '  <div class="lib-edit-box" id="libEditBox_' + idx + '">';
+        html += '    <div class="lib-edit-label">';
+        html += '      <span>📝 Tempel Draf Kasar / Catatan Berita:</span>';
+        html += '      <span class="lib-word-badge" style="font-size:11px;opacity:0.8;font-weight:600;">' + wordsCount + ' kata</span>';
+        html += '    </div>';
+        html += '    <textarea class="lib-draft-textarea" data-idx="' + idx + '" placeholder="Tempel catatan kegiatan sekolah atau data mentah berita di sini...&#10;&#10;Contoh:&#10;SD Muhammadiyah 1 Padang menyelenggarakan wisuda tahfidz juz 30 pada hari Sabtu (17/10/2026), bertempat di Aula Masjid Taqwa. Sebanyak 45 siswa diwisuda langsung oleh Pimpinan Wilayah Muhammadiyah Sumbar. Program ini dihadiri ratusan wali murid yang haru dan bersyukur...">' + draftVal + '</textarea>';
+        html += '    <div class="lib-edit-actionbar">';
+        html += '      <button type="button" class="lib-copy-all-btn lib-copy-combined-btn" data-idx="' + idx + '">📋 Salin Seluruhnya Bersama Prompt</button>';
+        html += '      <button type="button" class="btn-apple-secondary lib-clear-draft-btn" data-idx="' + idx + '">↺ Kosongkan Draf</button>';
+        html += '    </div>';
+        html += '    <p class="lib-edit-hint">💡 <strong>Otomatis disatukan:</strong> Draf kasar yang Anda tempel di atas otomatis ditanamkan ke dalam prompt pedoman Kompas.com di bawah ini. Cukup klik tombol <strong>Salin Seluruhnya Bersama Prompt</strong>, lalu tempel langsung ke Gemini atau ChatGPT.</p>';
+        html += '  </div>';
+      }
+
+      html += '  <pre class="lib-pre">' + compiledPrompt.replace(/</g, "&lt;").replace(/>/g, "&gt;") + '</pre>';
+      html += '</div>';
+    });
+    container.innerHTML = html;
+  }
+
+  renderLibrary(LIBRARY_ITEMS);
+
+  // Search & Filter Library
+  var currentCategory = "all";
+  var searchInput = document.getElementById("libSearchInput");
+
+  function filterLibrary() {
+    var query = searchInput.value.toLowerCase().trim();
+    var filtered = LIBRARY_ITEMS.filter(function(item){
+      var matchCat = (currentCategory === "all") || (item.category === currentCategory);
+      var matchQuery = (item.title.toLowerCase().indexOf(query) !== -1) || 
+                         (item.desc.toLowerCase().indexOf(query) !== -1) ||
+                         (item.badge.toLowerCase().indexOf(query) !== -1);
+      return matchCat && matchQuery;
+    });
+    renderLibrary(filtered);
+  }
+
+  searchInput.addEventListener("input", filterLibrary);
+
+  document.getElementById("libCategoryFilter").addEventListener("click", function(e){
+    if(e.target.classList.contains("apple-chip")){
+      document.querySelectorAll("#libCategoryFilter .apple-chip").forEach(function(c){
+        c.classList.remove("active");
+      });
+      e.target.classList.add("active");
+      currentCategory = e.target.getAttribute("data-cat");
+      filterLibrary();
+    }
+  });
+
+  // Delegated events for Library Cards
+  document.getElementById("liblistContainer").addEventListener("click", function(e){
+    var card = e.target.closest(".library-item-card");
+    if(!card) return;
+    var idx = +card.getAttribute("data-idx");
+    var item = LIBRARY_ITEMS[idx];
+
+    // Tombol Edit / Tempel Draf Kasar
+    if(e.target.classList.contains("lib-edit-btn")){
+      var editBox = card.querySelector(".lib-edit-box");
+      if(editBox){
+        var isShowing = editBox.classList.contains("show");
+        editBox.classList.toggle("show", !isShowing);
+        card.classList.add("open"); // buka juga preview promptnya
+        var toggleBtn = card.querySelector(".lib-toggle-btn");
+        if(toggleBtn) toggleBtn.textContent = "✕ Tutup Pedoman";
+        if(!isShowing){
+          var ta = editBox.querySelector(".lib-draft-textarea");
+          if(ta) setTimeout(function(){ ta.focus(); }, 100);
+        }
+      }
+    }
+
+    // Toggle Preview Template
+    if(e.target.classList.contains("lib-toggle-btn")){
+      var isOpen = card.classList.contains("open");
+      card.classList.toggle("open", !isOpen);
+      e.target.textContent = isOpen ? (item.hasDraftEditor ? "🔍 Buka Pedoman Lengkap" : "🔍 Buka Template") : "✕ Tutup Pedoman";
+    }
+
+    // Copy template dasar/asli
+    if(e.target.classList.contains("lib-copy-btn")){
+      var pre = card.querySelector(".lib-pre");
+      if(pre){
+        copyText(pre.textContent, "Template Prompt Tersalin!");
+      }
+    }
+
+    // Copy seluruh prompt + draf gabungan
+    if(e.target.classList.contains("lib-copy-combined-btn")){
+      var draftVal = libraryDraftStore[idx] || "";
+      var fullPrompt = getCombinedPrompt(item, draftVal);
+      copyText(fullPrompt, draftVal.trim() ? "✓ Prompt Kompas.com + Draf Kasar Berhasil Disalin!" : "✓ Prompt Kompas.com Disalin! (Silakan lengkapi draf Anda)");
+    }
+
+    // Kosongkan draf
+    if(e.target.classList.contains("lib-clear-draft-btn")){
+      var ta = card.querySelector(".lib-draft-textarea");
+      if(ta) ta.value = "";
+      libraryDraftStore[idx] = "";
+      var wordBadge = card.querySelector(".lib-word-badge");
+      if(wordBadge) wordBadge.textContent = "0 kata";
+      var pre = card.querySelector(".lib-pre");
+      if(pre) pre.textContent = getCombinedPrompt(item, "");
+      showToast("Draf berhasil dikosongkan.");
+    }
+  });
+
+  // Live input sync on textarea
+  document.getElementById("liblistContainer").addEventListener("input", function(e){
+    if(e.target.classList.contains("lib-draft-textarea")){
+      var card = e.target.closest(".library-item-card");
+      if(!card) return;
+      var idx = +card.getAttribute("data-idx");
+      var item = LIBRARY_ITEMS[idx];
+      var text = e.target.value;
+      libraryDraftStore[idx] = text;
+
+      var words = text.trim() ? text.trim().split(/\s+/).length : 0;
+      var wordBadge = card.querySelector(".lib-word-badge");
+      if(wordBadge) wordBadge.textContent = words + " kata";
+
+      var pre = card.querySelector(".lib-pre");
+      if(pre) pre.textContent = getCombinedPrompt(item, text);
+    }
+  });
+
+  /* ------------------- TAB 4: KALENDER MATRIKS ------------------- */
+  var RITME_HARIAN = [
+    {hari: "Senin", judul: "Motivasi Pagi & Adab Siswa", funnel: "Awareness"},
+    {hari: "Selasa", judul: "Edukasi Program Unggulan", funnel: "Consideration"},
+    {hari: "Rabu", judul: "Aksi Nyata Siswa Hari Ini", funnel: "Awareness"},
+    {hari: "Kamis", judul: "Prestasi & Apresiasi Proses", funnel: "Consideration"},
+    {hari: "Jumat", judul: "Jumat Berkah & Kajian Karakter", funnel: "Engagement"},
+    {hari: "Sabtu", judul: "Kisah / Testimoni Orang Tua", funnel: "Conversion"},
+    {hari: "Minggu", judul: "Undangan Kunjungan & PPDB", funnel: "Conversion"}
+  ];
+
+  var NAMA_BULAN = ["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"];
+  var HARI_HEAD = ["Senin","Selasa","Rabu","Kamis","Jumat","Sabtu","Minggu"];
+  var LS_KALENDER = "pk_kalender_edits_v2";
+
+  function getKalenderStore(){
+    try{ return JSON.parse(localStorage.getItem(LS_KALENDER) || "{}"); } catch(e){ return {}; }
+  }
+  function setKalenderStore(obj){
+    try{ localStorage.setItem(LS_KALENDER, JSON.stringify(obj)); } catch(e){}
+  }
+
+  function initKalenderSelects() {
+    var kb = document.getElementById("kbulan");
+    var kt = document.getElementById("ktahun");
+    var now = new Date();
+    for(var m = 0; m < 12; m++){
+      var opt = document.createElement("option");
+      opt.value = m;
+      opt.textContent = NAMA_BULAN[m];
+      if(m === now.getMonth()) opt.selected = true;
+      kb.appendChild(opt);
+    }
+    var currentYear = now.getFullYear();
+    for(var y = currentYear - 1; y <= currentYear + 3; y++){
+      var yopt = document.createElement("option");
+      yopt.value = y;
+      yopt.textContent = y;
+      if(y === currentYear) yopt.selected = true;
+      kt.appendChild(yopt);
+    }
+  }
+
+  var currentKalenderPlans = [];
+
+  function getPlanForDay(dow, frek) {
+    var idx = (dow + 6) % 7; // Monday = 0
+    var r = RITME_HARIAN[idx];
+    if(frek === "5" && idx === 5) return null; // skip Sabtu di 5x seminggu
+    if(frek === "3" && (idx !== 1 && idx !== 4 && idx !== 6)) return null; // hanya Sel, Jum, Min
+    return r;
+  }
+
+  function renderKalenderMatrix() {
+    var m = +document.getElementById("kbulan").value;
+    var y = +document.getElementById("ktahun").value;
+    var frek = document.getElementById("kfrek").value;
+    var sekolah = document.getElementById("ksekolah").value.trim() || "[Nama Sekolah Muhammadiyah]";
+
+    var firstDay = new Date(y, m, 1);
+    var leadSpaces = (firstDay.getDay() + 6) % 7;
+    var totalDays = new Date(y, m + 1, 0).getDate();
+    var weeksCount = Math.ceil((leadSpaces + totalDays) / 7);
+    var today = new Date();
+
+    var storedEdits = getKalenderStore();
+    currentKalenderPlans = [];
+
+    var html = "";
+    // Header Row
+    html += '<div class="cm-cell cm-header-cell cm-header-time">Waktu</div>';
+    for(var d = 0; d < 7; d++){
+      var headClass = "cm-header-cell";
+      if(d === 5) headClass += " cm-header-sat";
+      if(d === 6) headClass += " cm-header-sun";
+      html += '<div class="cm-cell ' + headClass + '">' + HARI_HEAD[d] + '</div>';
+    }
+
+    for(var w = 0; w < weeksCount; w++){
+      html += '<div class="cm-cell cm-week-label">Minggu ' + (w + 1) + '</div>';
+      for(var dd = 0; dd < 7; dd++){
+        var cellIndex = w * 7 + dd;
+        var dateNum = cellIndex - leadSpaces + 1;
+
+        if(dateNum < 1 || dateNum > totalDays){
+          html += '<div class="cm-cell cm-cell-out"></div>';
+        } else {
+          var cellDate = new Date(y, m, dateNum);
+          var isToday = (cellDate.getFullYear() === today.getFullYear() && 
+                         cellDate.getMonth() === today.getMonth() && 
+                         cellDate.getDate() === today.getDate());
+
+          var storeKey = y + "-" + (m + 1) + "-" + dateNum;
+          var autoPlan = getPlanForDay(cellDate.getDay(), frek);
+          var planText = "";
+          var hasPlan = false;
+
+          if(storedEdits[storeKey] !== undefined){
+            planText = storedEdits[storeKey];
+            hasPlan = planText.trim().length > 0 && planText.trim() !== "—";
+          } else if(autoPlan) {
+            planText = autoPlan.judul + " (" + autoPlan.funnel + ")";
+            hasPlan = true;
+          }
+
+          if(hasPlan){
+            currentKalenderPlans.push({
+              tanggal: dateNum,
+              hari: HARI_HEAD[dd],
+              rencana: planText
+            });
+          }
+
+          var cellClasses = "cm-cell";
+          if(hasPlan) cellClasses += " cm-cell-hasplan";
+          if(isToday) cellClasses += " cm-cell-today";
+
+          html += '<div class="' + cellClasses + '" data-key="' + storeKey + '">';
+          html += '  <span class="cm-date-num">' + dateNum + '</span>';
+          html += '  <div class="cm-plan-box">' + (planText || "—") + '</div>';
+          html += '  <button type="button" class="cm-cell-edit-btn" data-key="' + storeKey + '">✏️ Edit</button>';
+          html += '</div>';
+        }
+      }
+    }
+
+    document.getElementById("kalmatrix").innerHTML = html;
+    document.getElementById("kaltitle").innerHTML = "Rencana Konten — " + NAMA_BULAN[m] + " " + y + " (" + sekolah + ")";
+    var kalOut = document.getElementById("kalout");
+    kalOut.style.display = "block";
+    kalOut.scrollIntoView({behavior: "smooth", block: "nearest"});
+  }
+
+  document.getElementById("kbuat").addEventListener("click", renderKalenderMatrix);
+
+  // Edit inline plan
+  document.getElementById("kalmatrix").addEventListener("click", function(e){
+    if(e.target.classList.contains("cm-cell-edit-btn")){
+      var cell = e.target.closest(".cm-cell");
+      var planBox = cell.querySelector(".cm-plan-box");
+      var key = e.target.getAttribute("data-key");
+      var isEditing = planBox.getAttribute("contenteditable") === "true";
+
+      if(isEditing){
+        planBox.removeAttribute("contenteditable");
+        e.target.textContent = "✏️ Edit";
+        var newText = planBox.textContent.trim();
+        var store = getKalenderStore();
+        store[key] = newText;
+        setKalenderStore(store);
+        cell.classList.toggle("cm-cell-hasplan", newText.length > 0 && newText !== "—");
+        showToast("Rencana tanggal berhasil disimpan!");
+      } else {
+        planBox.setAttribute("contenteditable", "true");
+        planBox.focus();
+        e.target.textContent = "💾 Simpan";
+      }
+    }
+  });
+
+  // Salin seluruh rencana kalender
+  document.getElementById("ksalinsemua").addEventListener("click", function(){
+    var m = +document.getElementById("kbulan").value;
+    var y = +document.getElementById("ktahun").value;
+    var sekolah = document.getElementById("ksekolah").value.trim() || "Sekolah Muhammadiyah";
+
+    var text = "TIMELINE KONTEN " + NAMA_BULAN[m].toUpperCase() + " " + y + "\n" + sekolah + "\n\n";
+    currentKalenderPlans.forEach(function(item){
+      text += String(item.tanggal).padStart(2, "0") + " " + item.hari + " : " + item.rencana + "\n";
+    });
+    text += "\nDisusun via Prompt Kit Humas Sekolah Muhammadiyah (Langgam.id × Dikdasmen PWM Sumbar)";
+    copyText(text, "Seluruh Jadwal Kalender Berhasil Disalin!");
+  });
+
+  initKalenderSelects();
+
+})();
+</script>
+
+</body>
+</html>
