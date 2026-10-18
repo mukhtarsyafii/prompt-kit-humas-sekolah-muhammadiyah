@@ -1828,71 +1828,89 @@ footer.app-footer {
       badge: "Humas → Portal Media",
       title: "📰 Berita Rilis — Kaidah Jurnalistik Kompas.com & Dewan Pers",
       desc: "Ubah draf kegiatan sekolah menjadi siaran berita siap tayang di media online. Menanamkan UU Pers No. 40/1999, Kode Etik Jurnalistik, format piramida terbalik, diksi empati, hingga standar SEO Google Discover.",
-      prompt: BERITA_RILIS_PROMPT,
-      hasDraftEditor: true
+      placeholder: "Tempel catatan kegiatan, rilis internal, atau data mentah berita di sini...&#10;&#10;Contoh:&#10;SD Muhammadiyah 1 Padang menyelenggarakan wisuda tahfidz juz 30 pada hari Sabtu (17/10/2026), bertempat di Aula Masjid Taqwa. Sebanyak 45 siswa diwisuda langsung oleh Pimpinan Wilayah Muhammadiyah Sumbar. Program ini dihadiri ratusan wali murid yang haru dan bersyukur...",
+      prompt: BERITA_RILIS_PROMPT
     },
     {
+      id: "carousel_rekap",
       category: "Instagram",
       badge: "Instagram Carousel",
       title: "🖼️ Carousel Rekap Kegiatan 7 Slide",
       desc: "Struktur visual untuk postingan multi-slide di feed Instagram: Slide 1 hook, Slide 2–6 cerita proses belajar anak, Slide 7 ajakan silaturahmi PPDB.",
-      prompt: "Berperanlah sebagai desainer konten Instagram sekolah. Buatkan outline carousel 7 slide untuk merekap [NAMA KEGIATAN] di [NAMA SEKOLAH].\nSlide 1: Judul hook yang memikat perhatian orang tua.\nSlide 2-6: Satu foto + satu kalimat cerita per momen (fokus pada ekspresi, kerjasama, dan proses siswa).\nSlide 7: CTA PPDB dan kontak sekolah.\nSertakan rekomendasi arahan foto (shot angle) untuk masing-masing slide."
+      placeholder: "Tempel info kegiatan sekolah: nama acara, nama sekolah, tanggal, momen-momen seru siswa di kelas/lapangan, dan kontak PPDB...",
+      prompt: "Berperanlah sebagai desainer konten Instagram sekolah. Buatkan outline carousel 7 slide untuk merekap kegiatan sekolah kami.\nSlide 1: Judul hook yang memikat perhatian orang tua.\nSlide 2-6: Satu foto + satu kalimat cerita per momen (fokus pada ekspresi, kerjasama, dan proses siswa).\nSlide 7: CTA PPDB dan kontak sekolah.\nSertakan rekomendasi arahan foto (shot angle) untuk masing-masing slide."
     },
     {
+      id: "prestasi_siswa",
       category: "Instagram",
       badge: "Prestasi Siswa",
       title: "🏆 Caption Apresiasi Prestasi Siswa",
       desc: "Menyoroti kerja keras dan doa di balik medali, membangun reputasi mutu sekolah tanpa terkesan sombong.",
-      prompt: "Buatkan caption Instagram dari data prestasi berikut: [NAMA SISWA/KELAS, PRESTASI, NAMA LOMBA, PENYELENGGARA, TANGGAL].\nTonjolkan proses: ketekunan latihan, bimbingan ustadz/ustadzah, dan ridho orang tua. Hook 8 kata pertama yang menyentuh. Tutup dengan ajakan menyekolahkan anak ke [NAMA SEKOLAH]. Sertakan 15 hashtag pendidikan dan kota [KOTA]."
+      placeholder: "Tempel data prestasi: nama siswa & kelas, nama lomba, juara berapa, penyelenggara, tanggal lomba, ustadz pembina, dan nama sekolah...",
+      prompt: "Buatkan caption Instagram dari data prestasi siswa kami.\nTonjolkan proses: ketekunan latihan, bimbingan ustadz/ustadzah, dan ridho orang tua. Hook 8 kata pertama yang menyentuh kalbu. Tutup dengan ajakan menyekolahkan anak ke sekolah kami. Sertakan 15 hashtag pendidikan dan kota."
     },
     {
+      id: "profil_guru",
       category: "Instagram",
       badge: "Storytelling Guru",
       title: "👩‍🏫 Profil Guru & Wajah Sekolah yang Hangat",
       desc: "Wawancara ringkas guru yang dikemas menjadi cerita inspiratif untuk mendekatkan pengajar dengan wali murid.",
-      prompt: "Ubah wawancara ringkas guru berikut: [NAMA GURU, MATA PELAJARAN/KELAS, PENGALAMAN, METODE MENGAJAR UNIK, MOTIVASI MENGAJAR] menjadi kisah storytelling 90 kata untuk Instagram.\nMulai dari kebiasaan kecil beliau saat menyambut murid di kelas (bukan daftar gelar akademik). Akhiri dengan kutipan hangat sang guru tentang mendidik anak dengan kasih sayang."
+      placeholder: "Tempel data profil guru: nama lengkap/panggilan, mata pelajaran/wali kelas, lama mengajar, kebiasaan unik saat menyambut siswa di pagi hari, dan pesan beliau untuk anak didik...",
+      prompt: "Ubah data guru kami menjadi kisah storytelling 90 kata untuk Instagram.\nMulai dari kebiasaan kecil beliau saat menyambut murid di kelas (bukan daftar gelar akademik). Akhiri dengan kutipan hangat sang guru tentang mendidik anak dengan kasih sayang."
     },
     {
+      id: "broadcast_ppdb",
       category: "WhatsApp",
       badge: "WhatsApp Broadcast",
       title: "💬 Siaran Pengumuman PPDB Ramah Wali Murid",
       desc: "Pesan broadcast grup WA yang mengalir luwes, hangat, tidak kaku seperti brosur formal.",
-      prompt: "Buat draf pesan WhatsApp broadcast untuk grup wali murid tentang pembukaan PPDB [TAHUN AJARAN] di [NAMA SEKOLAH].\nSertakan: jalur pendaftaran, kuota yang tersedia, 3 keunggulan pembiasaan karakter utama, serta kontak admin pendaftaran.\nNada tulisan: ramah, penuh rasa kekeluargaan, panjang maksimal 110 kata dengan 1 CTA yang jelas."
+      placeholder: "Tempel info PPDB: nama sekolah, tahun ajaran baru, jalur/gelombang pendaftaran, kuota kelas, 3 keunggulan utama, dan nomor kontak panitia/link pendaftaran...",
+      prompt: "Buat draf pesan WhatsApp broadcast untuk grup wali murid tentang pembukaan PPDB di sekolah kami.\nSertakan: jalur pendaftaran, kuota yang tersedia, 3 keunggulan pembiasaan karakter utama, serta kontak admin pendaftaran.\nNada tulisan: ramah, penuh rasa kekeluargaan, panjang maksimal 110 kata dengan 1 CTA yang jelas."
     },
     {
+      id: "tiktok_hook",
       category: "TikTok",
       badge: "Video Pendek",
       title: "🎬 5 Ide Hook Video TikTok / Reels Sekolah",
       desc: "Gagasan kalimat pembuka 3 detik pertama agar orang tua tidak me-skip video pendek sekolah Anda.",
-      prompt: "Buatkan 5 ide hook video pendek (TikTok/Reels) untuk sekolah Muhammadiyah [NAMA SEKOLAH] yang membuat ORANG TUA langsung berhenti scroll dalam 3 detik pertama.\nFormat tiap ide: Kalimat lisan pertama + petunjuk visual adegan awal.\nTema: kemandirian siswa, suasana hafalan Al-Qur'an yang ceria, fasilitas belajar ramah anak, dan kedekatan guru dengan siswa. Hindari sensasi negatif."
+      placeholder: "Tempel tema/kegiatan yang mau dibuat video: cth suasana makan siang bersama yang tertib adab, sholat dhuha berjamaah, lab IPA/robotika, atau wawancara siswa cilik...",
+      prompt: "Buatkan 5 ide hook video pendek (TikTok/Reels) untuk sekolah Muhammadiyah kami yang membuat ORANG TUA langsung berhenti scroll dalam 3 detik pertama.\nFormat tiap ide: Kalimat lisan pertama + petunjuk visual adegan awal.\nTema: kemandirian siswa, suasana hafalan Al-Qur'an yang ceria, fasilitas belajar ramah anak, dan kedekatan guru dengan siswa. Hindari sensasi negatif."
     },
     {
+      id: "brief_dokumentasi",
       category: "Manajemen",
       badge: "SOP Lapangan",
       title: "📋 Brief Tim Dokumentasi & Fotografer",
       desc: "Panduan praktis bagi guru atau staf yang bertugas memotret saat acara sekolah berlangsung.",
-      prompt: "Buat checklist brief tugas dokumentasi untuk tim pelaksana/volunteer pada acara [NAMA KEGIATAN, TANGGAL].\nSertakan: 10 tipe pengambilan gambar wajib (ekspresi anak, interaksi guru-siswa, detail aktivitas, suasana jamaah), etika memotret anak, larangan mengunggah foto blur/tidak sopan, dan format penamaan file arsip."
+      placeholder: "Tempel nama acara, hari/tanggal, lokasi, susunan acara/rundown singkat, dan nama penanggung jawab dokumentasi...",
+      prompt: "Buat checklist brief tugas dokumentasi untuk tim pelaksana/volunteer pada acara sekolah kami.\nSertakan: 10 tipe pengambilan gambar wajib (ekspresi anak, interaksi guru-siswa, detail aktivitas, suasana jamaah), etika memotret anak, larangan mengunggah foto blur/tidak sopan, dan format penamaan file arsip."
     },
     {
+      id: "klarifikasi_isu",
       category: "Manajemen",
       badge: "Manajemen Krisis",
       title: "🛡️ Pernyataan Klarifikasi Isu yang Tenang & Bijak",
       desc: "Draf respons cepat saat sekolah menghadapi kesalahpahaman informasi di ranah publik.",
-      prompt: "Sekolah kami menghadapi isu/pertanyaan berikut di media sosial: [JELASKAN FAKTA SEBENARNYA].\nBuatkan draf pernyataan klarifikasi resmi sepanjang 100 kata untuk Instagram/Facebook: tenang, faktual, tidak menyerang siapa pun, menunjukkan langkah perbaikan nyata, dan membuka jalur komunikasi resmi. Nada tulisan: Kepala Sekolah yang bijak dan mengayomi."
+      placeholder: "Tempel kronologi isu sebenarnya: apa rumor/pertanyaan yang beredar di masyarakat/medsos dan bagaimana fakta sebenarnya yang terjadi di sekolah...",
+      prompt: "Sekolah kami menghadapi isu/pertanyaan di media sosial. Buatkan draf pernyataan klarifikasi resmi sepanjang 100 kata untuk Instagram/Facebook: tenang, faktual, tidak menyerang siapa pun, menunjukkan langkah perbaikan nyata, dan membuka jalur komunikasi resmi. Nada tulisan: Kepala Sekolah yang bijak dan mengayomi."
     },
     {
+      id: "pepatah_minang",
       category: "Instagram",
       badge: "Kearifan Lokal",
       title: "🌿 Caption Berpepatah Minangkabau & ABS-SBK",
       desc: "Mengangkat khazanah adat Minang untuk memperkuat karakter anak didik.",
-      prompt: "Buatkan caption Instagram mengenai [TOPIK KEGIATAN SISWA] yang diawali pepatah Minangkabau relevan, kemudian dihubungkan secara santun dengan nilai Adat Basandi Syarak, Syarak Basandi Kitabullah yang diterapkan di [NAMA SEKOLAH]. Panjang maksimal 85 kata, hangat, dan diakhiri informasi kontak PPDB."
+      placeholder: "Tempel topik kegiatan siswa dan nama sekolah yang ingin diangkat (misal: gotong royong membersihkan kelas, musyawarah kelas, adab menghormati guru)...",
+      prompt: "Buatkan caption Instagram mengenai kegiatan siswa kami yang diawali pepatah Minangkabau relevan, kemudian dihubungkan secara santun dengan nilai Adat Basandi Syarak, Syarak Basandi Kitabullah yang diterapkan di sekolah kami. Panjang maksimal 85 kata, hangat, dan diakhiri informasi kontak PPDB."
     },
     {
+      id: "audit_bio",
       category: "Manajemen",
       badge: "Audit Media Sosial",
       title: "🔍 Evaluasi Bio & Tampilan Feed Instagram",
       desc: "Mengevaluasi profil akun sekolah apakah sudah meyakinkan bagi orang tua yang baru berkunjung.",
-      prompt: "Berikut ini adalah bio akun Instagram sekolah kami: '[TEMPEL BIO]' dan 9 judul postingan terakhir: '[TEMPEL 9 JUDUL]'.\nBertindaklah sebagai konsultan komunikasi pendidikan: berikan skor 1-10 untuk kejelasan identitas sekolah bagi calon wali murid, kerapian pesan, dan kejelasan CTA. Berikan 3 rekomendasi perbaikan paling penting."
+      placeholder: "Tempel teks bio Instagram sekolah Anda saat ini dan 5-9 judul postingan terakhir untuk dievaluasi...",
+      prompt: "Bertindaklah sebagai konsultan komunikasi pendidikan: berikan skor 1-10 untuk kejelasan identitas sekolah bagi calon wali murid, kerapian pesan, dan kejelasan CTA berdasarkan data akun kami. Berikan 3 rekomendasi perbaikan paling penting."
     }
   ];
 
@@ -1901,47 +1919,49 @@ footer.app-footer {
   function getCombinedPrompt(item, draftText) {
     var raw = item.prompt;
     var draft = (draftText || "").trim();
-    if(item.hasDraftEditor && draft) {
+    if(!draft) return raw;
+
+    // Khusus Berita Rilis Kompas.com
+    if(item.id === "berita_rilis" && raw.indexOf("[Tempel catatan kegiatan, rilis internal, atau data mentah berita di sini]") !== -1) {
       return raw.replace("[Tempel catatan kegiatan, rilis internal, atau data mentah berita di sini]", draft);
     }
-    return raw;
+
+    // Untuk seluruh prompt lainnya, tanamkan blok data/bahan berita secara rapi dan terstruktur
+    return raw + "\n\n=== BAHAN / CATATAN DATA DARI SAYA: ===\n" + draft + "\n\n(Tolong olah dan terapkan seluruh data di atas sesuai instruksi pedoman di atas).";
   }
 
   function renderLibrary(items) {
     var container = document.getElementById("liblistContainer");
     var html = "";
     items.forEach(function(item, idx){
-      var draftVal = libraryDraftStore[idx] || "";
+      var draftVal = libraryDraftStore[item.id || idx] || "";
       var compiledPrompt = getCombinedPrompt(item, draftVal);
       var wordsCount = draftVal.trim() ? draftVal.trim().split(/\s+/).length : 0;
+      var itemKey = item.id || idx;
 
-      html += '<div class="library-item-card' + (item.hasDraftEditor ? ' has-editor' : '') + '" data-idx="' + idx + '">';
+      html += '<div class="library-item-card has-editor" data-key="' + itemKey + '">';
       html += '  <span class="lib-badge">' + item.badge + '</span>';
       html += '  <h3>' + item.title + '</h3>';
       html += '  <p class="lib-desc">' + item.desc + '</p>';
       
       html += '  <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:4px;">';
-      if(item.hasDraftEditor) {
-        html += '    <button type="button" class="btn-apple-secondary lib-edit-btn" data-idx="' + idx + '" style="background:var(--gold-gradient);color:#062412;border:none;font-weight:700;">✏️ Edit / Tempel Draf Kasar</button>';
-      }
-      html += '    <button type="button" class="btn-apple-secondary lib-toggle-btn" data-idx="' + idx + '">🔍 ' + (item.hasDraftEditor ? 'Buka Pedoman Lengkap' : 'Buka Template') + '</button>';
-      html += '    <button type="button" class="btn-apple-secondary lib-copy-btn" data-idx="' + idx + '" style="' + (item.hasDraftEditor ? '' : 'background:var(--gold-gradient);color:#062412;border:none;') + '">📋 ' + (item.hasDraftEditor ? 'Salin Template Kosong' : 'Salin') + '</button>';
+      html += '    <button type="button" class="btn-apple-secondary lib-edit-btn" data-key="' + itemKey + '" style="background:var(--gold-gradient);color:#062412;border:none;font-weight:700;">✏️ Edit / Tempel Bahan</button>';
+      html += '    <button type="button" class="btn-apple-secondary lib-toggle-btn" data-key="' + itemKey + '">🔍 Buka Template</button>';
+      html += '    <button type="button" class="btn-apple-secondary lib-copy-btn" data-key="' + itemKey + '">📋 Salin Template Kosong</button>';
       html += '  </div>';
 
-      if(item.hasDraftEditor) {
-        html += '  <div class="lib-edit-box" id="libEditBox_' + idx + '">';
-        html += '    <div class="lib-edit-label">';
-        html += '      <span>📝 Tempel Draf Kasar / Catatan Berita:</span>';
-        html += '      <span class="lib-word-badge" style="font-size:11px;opacity:0.8;font-weight:600;">' + wordsCount + ' kata</span>';
-        html += '    </div>';
-        html += '    <textarea class="lib-draft-textarea" data-idx="' + idx + '" placeholder="Tempel catatan kegiatan sekolah atau data mentah berita di sini...&#10;&#10;Contoh:&#10;SD Muhammadiyah 1 Padang menyelenggarakan wisuda tahfidz juz 30 pada hari Sabtu (17/10/2026), bertempat di Aula Masjid Taqwa. Sebanyak 45 siswa diwisuda langsung oleh Pimpinan Wilayah Muhammadiyah Sumbar. Program ini dihadiri ratusan wali murid yang haru dan bersyukur...">' + draftVal + '</textarea>';
-        html += '    <div class="lib-edit-actionbar">';
-        html += '      <button type="button" class="lib-copy-all-btn lib-copy-combined-btn" data-idx="' + idx + '">📋 Salin Seluruhnya Bersama Prompt</button>';
-        html += '      <button type="button" class="btn-apple-secondary lib-clear-draft-btn" data-idx="' + idx + '">↺ Kosongkan Draf</button>';
-        html += '    </div>';
-        html += '    <p class="lib-edit-hint">💡 <strong>Otomatis disatukan:</strong> Draf kasar yang Anda tempel di atas otomatis ditanamkan ke dalam prompt pedoman Kompas.com di bawah ini. Cukup klik tombol <strong>Salin Seluruhnya Bersama Prompt</strong>, lalu tempel langsung ke Gemini atau ChatGPT.</p>';
-        html += '  </div>';
-      }
+      html += '  <div class="lib-edit-box" id="libEditBox_' + itemKey + '">';
+      html += '    <div class="lib-edit-label">';
+      html += '      <span>📝 Tempel Bahan / Draf Kegiatan:</span>';
+      html += '      <span class="lib-word-badge" style="font-size:11px;opacity:0.8;font-weight:600;">' + wordsCount + ' kata</span>';
+      html += '    </div>';
+      html += '    <textarea class="lib-draft-textarea" data-key="' + itemKey + '" placeholder="' + (item.placeholder || 'Tempel bahan atau catatan kegiatan di sini...') + '">' + draftVal + '</textarea>';
+      html += '    <div class="lib-edit-actionbar">';
+      html += '      <button type="button" class="lib-copy-all-btn lib-copy-combined-btn" data-key="' + itemKey + '">📋 Salin Seluruhnya Bersama Prompt</button>';
+      html += '      <button type="button" class="btn-apple-secondary lib-clear-draft-btn" data-key="' + itemKey + '">↺ Kosongkan Bahan</button>';
+      html += '    </div>';
+      html += '    <p class="lib-edit-hint">💡 <strong>Otomatis disatukan:</strong> Bahan kegiatan yang Anda tempel di atas otomatis ditanamkan ke dalam prompt di bawah. Cukup klik tombol <strong>Salin Seluruhnya Bersama Prompt</strong>, lalu tempel langsung ke Gemini atau ChatGPT.</p>';
+      html += '  </div>';
 
       html += '  <pre class="lib-pre">' + compiledPrompt.replace(/</g, "&lt;").replace(/>/g, "&gt;") + '</pre>';
       html += '</div>';
@@ -1980,14 +2000,21 @@ footer.app-footer {
     }
   });
 
+  function findItemByKey(key) {
+    for(var i = 0; i < LIBRARY_ITEMS.length; i++){
+      if(LIBRARY_ITEMS[i].id === key || String(i) === key) return LIBRARY_ITEMS[i];
+    }
+    return LIBRARY_ITEMS[0];
+  }
+
   // Delegated events for Library Cards
   document.getElementById("liblistContainer").addEventListener("click", function(e){
     var card = e.target.closest(".library-item-card");
     if(!card) return;
-    var idx = +card.getAttribute("data-idx");
-    var item = LIBRARY_ITEMS[idx];
+    var key = card.getAttribute("data-key");
+    var item = findItemByKey(key);
 
-    // Tombol Edit / Tempel Draf Kasar
+    // Tombol Edit / Tempel Bahan Kasar
     if(e.target.classList.contains("lib-edit-btn")){
       var editBox = card.querySelector(".lib-edit-box");
       if(editBox){
@@ -1995,7 +2022,7 @@ footer.app-footer {
         editBox.classList.toggle("show", !isShowing);
         card.classList.add("open"); // buka juga preview promptnya
         var toggleBtn = card.querySelector(".lib-toggle-btn");
-        if(toggleBtn) toggleBtn.textContent = "✕ Tutup Pedoman";
+        if(toggleBtn) toggleBtn.textContent = "✕ Tutup Template";
         if(!isShowing){
           var ta = editBox.querySelector(".lib-draft-textarea");
           if(ta) setTimeout(function(){ ta.focus(); }, 100);
@@ -2007,34 +2034,32 @@ footer.app-footer {
     if(e.target.classList.contains("lib-toggle-btn")){
       var isOpen = card.classList.contains("open");
       card.classList.toggle("open", !isOpen);
-      e.target.textContent = isOpen ? (item.hasDraftEditor ? "🔍 Buka Pedoman Lengkap" : "🔍 Buka Template") : "✕ Tutup Pedoman";
+      e.target.textContent = isOpen ? "🔍 Buka Template" : "✕ Tutup Template";
     }
 
-    // Copy template dasar/asli
+    // Copy template dasar/kosong
     if(e.target.classList.contains("lib-copy-btn")){
-      var pre = card.querySelector(".lib-pre");
-      if(pre){
-        copyText(pre.textContent, "Template Prompt Tersalin!");
-      }
+      var rawPrompt = item.prompt;
+      copyText(rawPrompt, "Template Prompt Kosong Tersalin!");
     }
 
-    // Copy seluruh prompt + draf gabungan
+    // Copy seluruh prompt + bahan gabungan
     if(e.target.classList.contains("lib-copy-combined-btn")){
-      var draftVal = libraryDraftStore[idx] || "";
+      var draftVal = libraryDraftStore[key] || "";
       var fullPrompt = getCombinedPrompt(item, draftVal);
-      copyText(fullPrompt, draftVal.trim() ? "✓ Prompt Kompas.com + Draf Kasar Berhasil Disalin!" : "✓ Prompt Kompas.com Disalin! (Silakan lengkapi draf Anda)");
+      copyText(fullPrompt, draftVal.trim() ? "✓ Prompt + Bahan Berita Berhasil Disalin!" : "✓ Prompt Disalin! (Silakan tempel bahan Anda)");
     }
 
-    // Kosongkan draf
+    // Kosongkan bahan
     if(e.target.classList.contains("lib-clear-draft-btn")){
       var ta = card.querySelector(".lib-draft-textarea");
       if(ta) ta.value = "";
-      libraryDraftStore[idx] = "";
+      libraryDraftStore[key] = "";
       var wordBadge = card.querySelector(".lib-word-badge");
       if(wordBadge) wordBadge.textContent = "0 kata";
       var pre = card.querySelector(".lib-pre");
       if(pre) pre.textContent = getCombinedPrompt(item, "");
-      showToast("Draf berhasil dikosongkan.");
+      showToast("Bahan berita berhasil dikosongkan.");
     }
   });
 
@@ -2043,10 +2068,10 @@ footer.app-footer {
     if(e.target.classList.contains("lib-draft-textarea")){
       var card = e.target.closest(".library-item-card");
       if(!card) return;
-      var idx = +card.getAttribute("data-idx");
-      var item = LIBRARY_ITEMS[idx];
+      var key = card.getAttribute("data-key");
+      var item = findItemByKey(key);
       var text = e.target.value;
-      libraryDraftStore[idx] = text;
+      libraryDraftStore[key] = text;
 
       var words = text.trim() ? text.trim().split(/\s+/).length : 0;
       var wordBadge = card.querySelector(".lib-word-badge");
