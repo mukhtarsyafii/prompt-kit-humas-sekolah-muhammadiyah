@@ -1347,10 +1347,11 @@ footer.app-footer {
   }
 
   .cal-grid-matrix {
-    min-width: 100% !important;
+    min-width: 0 !important;
     width: 100% !important;
+    max-width: 100% !important;
     display: grid !important;
-    grid-template-columns: 75px repeat(7, 1fr) !important;
+    grid-template-columns: 50px repeat(7, minmax(0, 1fr)) !important;
     background: #ffffff !important;
     page-break-inside: avoid !important;
     break-inside: avoid !important;
@@ -2506,46 +2507,51 @@ footer.app-footer {
     cloneMatrix.querySelectorAll(".cm-cell-edit-btn").forEach(function(b) {
       b.remove();
     });
+    cloneMatrix.style.minWidth = "0";
+    cloneMatrix.style.width = "100%";
 
     var frame = document.getElementById("printFrame");
     if (!frame) {
       frame = document.createElement("iframe");
       frame.id = "printFrame";
       frame.style.position = "fixed";
-      frame.style.right = "100%";
-      frame.style.bottom = "100%";
-      frame.style.width = "0px";
-      frame.style.height = "0px";
+      frame.style.right = "0";
+      frame.style.bottom = "0";
+      frame.style.width = "100%";
+      frame.style.height = "100%";
       frame.style.border = "none";
+      frame.style.zIndex = "-9999";
+      frame.style.opacity = "0";
+      frame.style.pointerEvents = "none";
       document.body.appendChild(frame);
     }
 
     var printHtml = '<!DOCTYPE html>' +
       '<html><head><meta charset="UTF-8"><title>' + titleText + '</title>' +
       '<style>' +
-      '@page { size: A4 landscape; margin: 8mm 10mm; }' +
+      '@page { size: A4 landscape; margin: 6mm 8mm; }' +
       '* { box-sizing: border-box; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; color-adjust: exact !important; }' +
-      'html, body { margin: 0; padding: 0; background: #ffffff; color: #111827; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; width: 100%; height: 100%; }' +
+      'html, body { margin: 0; padding: 0; background: #ffffff; color: #111827; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; width: 100%; }' +
       '.print-container { width: 100%; max-width: 100%; padding: 0; margin: 0 auto; }' +
-      '.print-title { text-align: center; font-size: 15pt; font-weight: 800; color: #064e3b; margin: 0 0 5mm 0; letter-spacing: 0.5px; }' +
-      '.cal-grid-matrix { display: grid; grid-template-columns: 75px repeat(7, 1fr); width: 100%; border: 2px solid #064e3b; border-radius: 6px; overflow: hidden; background: #ffffff; page-break-inside: avoid; }' +
-      '.cm-cell { border-right: 1px solid #cbd5e1; border-bottom: 1px solid #cbd5e1; height: 25.5mm; max-height: 25.5mm; padding: 4px 5px; display: flex; flex-direction: column; justify-content: flex-start; overflow: hidden; background: #ffffff; page-break-inside: avoid; }' +
-      '.cm-header-cell { background: #064e3b !important; color: #fef3c7 !important; font-weight: 700; font-size: 9.5pt; text-align: center; height: 26px !important; min-height: 26px !important; padding: 4px 2px; border-bottom: 2px solid #042f24; border-right: 1px solid rgba(255,255,255,0.2); }' +
+      '.print-title { text-align: center; font-size: 14pt; font-weight: 800; color: #064e3b; margin: 0 0 3.5mm 0; letter-spacing: 0.5px; }' +
+      '.cal-grid-matrix { display: grid !important; grid-template-columns: 50px repeat(7, minmax(0, 1fr)) !important; width: 100% !important; max-width: 100% !important; min-width: 0 !important; border: 1.5px solid #064e3b !important; border-radius: 6px !important; overflow: hidden !important; background: #ffffff !important; page-break-inside: avoid !important; }' +
+      '.cm-cell { border-right: 1px solid #cbd5e1 !important; border-bottom: 1px solid #cbd5e1 !important; height: 24.5mm !important; max-height: 25mm !important; padding: 2px 4px !important; display: flex !important; flex-direction: column !important; justify-content: flex-start !important; overflow: hidden !important; background: #ffffff !important; page-break-inside: avoid !important; }' +
+      '.cm-header-cell { background: #064e3b !important; color: #fef3c7 !important; font-weight: 700 !important; font-size: 8.5pt !important; text-align: center !important; height: 22px !important; min-height: 22px !important; padding: 3px 1px !important; border-bottom: 2px solid #042f24 !important; border-right: 1px solid rgba(255,255,255,0.2) !important; }' +
       '.cm-header-time { background: #042f24 !important; color: #fef3c7 !important; }' +
       '.cm-header-sat { background: #7f1d1d !important; color: #fee2e2 !important; }' +
       '.cm-header-sun { background: #991b1b !important; color: #fee2e2 !important; }' +
-      '.cm-week-label { background: #064e3b !important; color: #fef3c7 !important; font-weight: 800; font-size: 8.5pt; display: flex; align-items: center; justify-content: center; text-align: center; border-right: 1.5px solid #042f24; border-bottom: 1px solid #cbd5e1; }' +
-      '.cm-date-num { font-size: 10pt; font-weight: 800; color: #111827; text-align: center; margin-bottom: 2px; line-height: 1; }' +
+      '.cm-week-label { background: #064e3b !important; color: #fef3c7 !important; font-weight: 800 !important; font-size: 7.5pt !important; display: flex !important; align-items: center !important; justify-content: center !important; text-align: center !important; border-right: 1.5px solid #042f24 !important; border-bottom: 1px solid #cbd5e1 !important; }' +
+      '.cm-date-num { font-size: 9pt !important; font-weight: 800 !important; color: #111827 !important; text-align: center !important; margin-bottom: 1px !important; line-height: 1 !important; }' +
       '.cm-cell-hasplan { background: #fffbeb !important; }' +
       '.cm-cell-hasplan .cm-date-num { color: #92400e !important; }' +
       '.cm-cell-today { background: #ecfdf5 !important; border: 2px solid #059669 !important; }' +
-      '.cm-cell-today .cm-date-num { color: #065f46 !important; font-weight: 800; }' +
-      '.cm-cell-today .cm-plan-box { color: #064e3b !important; font-weight: 700; }' +
-      '.cm-plan-box { font-size: 8pt; font-weight: 600; line-height: 1.25; color: #1f2937; text-align: center; word-break: break-word; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; margin-top: 1px; }' +
-      '.cm-cell-out { background: #f1f5f9 !important; opacity: 0.45; }' +
-      '.print-legend { display: flex; justify-content: center; align-items: center; gap: 24px; margin-top: 4mm; font-size: 8pt; color: #4b5563; }' +
-      '.print-legend span { display: inline-flex; align-items: center; gap: 5px; }' +
-      '.print-legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; border: 1px solid #9ca3af; }' +
+      '.cm-cell-today .cm-date-num { color: #065f46 !important; font-weight: 800 !important; }' +
+      '.cm-cell-today .cm-plan-box { color: #064e3b !important; font-weight: 700 !important; }' +
+      '.cm-plan-box { font-size: 7.2pt !important; font-weight: 600 !important; line-height: 1.18 !important; color: #1f2937 !important; text-align: center !important; word-break: break-word !important; overflow: hidden !important; display: -webkit-box !important; -webkit-line-clamp: 4 !important; -webkit-box-orient: vertical !important; margin-top: 1px !important; }' +
+      '.cm-cell-out { background: #f1f5f9 !important; opacity: 0.45 !important; }' +
+      '.print-legend { display: flex !important; justify-content: center !important; align-items: center !important; gap: 20px !important; margin-top: 3mm !important; font-size: 7.5pt !important; color: #4b5563 !important; }' +
+      '.print-legend span { display: inline-flex !important; align-items: center !important; gap: 4px !important; }' +
+      '.print-legend i { display: inline-block !important; width: 9px !important; height: 9px !important; border-radius: 2px !important; border: 1px solid #9ca3af !important; }' +
       '.cm-cell-edit-btn { display: none !important; }' +
       '</style></head><body>' +
       '<div class="print-container">' +
@@ -2566,7 +2572,7 @@ footer.app-footer {
     setTimeout(function() {
       frame.contentWindow.focus();
       frame.contentWindow.print();
-    }, 250);
+    }, 300);
   }
 
   var printBtn = document.getElementById("kcetakpdf");
