@@ -2,6 +2,8 @@
 
 > Suite Produktivitas & Generator Prompt AI Berbasis Formula PANDU untuk Tim Kehumasan Sekolah Muhammadiyah.
 
+🌐 **Live Web App:** [https://prompt-kit-humas-sekolah-muhammadiyah.netlify.app](https://prompt-kit-humas-sekolah-muhammadiyah.netlify.app)
+
 Aplikasi web modern yang dirancang untuk mempercepat dan meningkatkan kualitas produksi konten publikasi, komunikasi orang tua, rilis berita jurnalistik, dan promosi PPDB sekolah Muhammadiyah secara etis dengan prinsip **Human-in-the-Loop** (AI sebagai penyusun draf cepat, manusia sebagai penentu dan verifikator akhir).
 
 ---
