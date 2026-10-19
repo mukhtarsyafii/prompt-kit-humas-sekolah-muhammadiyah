@@ -1232,181 +1232,255 @@ footer.app-footer {
 }
 
 /* ==========================================================================
-   PRINT STYLES (HANYA MENCETAK KALENDER KONTEN)
+   PRINT STYLES (HANYA MENCETAK KALENDER KONTEN — TEPAT 1 HALAMAN A4 LANDSCAPE)
    ========================================================================== */
 @page {
-  size: landscape;
-  margin: 10mm 12mm;
+  size: A4 landscape;
+  margin: 8mm 10mm;
 }
 
 @media print {
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+    box-sizing: border-box !important;
+  }
+
   html, body {
     background: #ffffff !important;
     background-image: none !important;
-    color: #111111 !important;
+    color: #111827 !important;
     padding: 0 !important;
     margin: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    overflow: visible !important;
   }
   
   body::before {
     display: none !important;
   }
 
-  /* Sembunyikan seluruh elemen di luar kalender */
-  .top-action-bar,
-  .hero-header,
-  .segmented-nav-wrapper,
-  .apple-mobile-dock,
-  .rambu-floating-pill,
-  .dynamic-toast,
-  footer.app-footer,
-  #panel-gen,
-  #panel-lib,
-  #panel-pandu {
+  /* 1. Sembunyikan SEMUA elemen root di luar .app-container */
+  body > *:not(.app-container) {
     display: none !important;
   }
 
-  /* Sembunyikan elemen input form dan tombol susun kalender */
-  #panel-kal .card-title,
-  #panel-kal .card-desc,
-  #panel-kal .cal-controls-row,
-  #panel-kal #kbuat {
-    display: none !important;
-  }
-
-  /* Sembunyikan tombol aksi salin & cetak dan tombol edit per sel */
-  .cal-actions-bar,
-  .cm-cell-edit-btn,
-  .copy-action-bar {
-    display: none !important;
-  }
-
-  /* Reset kontainer untuk layout cetak penuh */
+  /* 2. Sembunyikan elemen di dalam .app-container selain #panel-kal */
   .app-container {
     max-width: 100% !important;
+    width: 100% !important;
     padding: 0 !important;
     margin: 0 !important;
   }
 
-  .glass-card {
-    background: transparent !important;
-    border: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    box-shadow: none !important;
+  .app-container > *:not(#panel-kal) {
+    display: none !important;
   }
 
+  /* 3. Di dalam #panel-kal, sembunyikan semua anak selain #kalout */
   #panel-kal {
     display: block !important;
+    padding: 0 !important;
+    margin: 0 !important;
   }
 
+  #panel-kal > .glass-card {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  #panel-kal .glass-card > *:not(#kalout) {
+    display: none !important;
+  }
+
+  /* 4. Tampilkan #kalout secara utuh dan terpusat */
   #kalout {
     display: block !important;
     margin: 0 !important;
     padding: 0 !important;
+    width: 100% !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
   }
 
+  /* Sembunyikan tombol-tombol aksi dan tombol edit di dalam kalender */
+  .cal-actions-bar,
+  .cm-cell-edit-btn,
+  .copy-action-bar,
+  button {
+    display: none !important;
+  }
+
+  /* Judul Kalender Elegan & Kontras */
   #kaltitle {
-    color: #0b582b !important;
-    font-size: 16pt !important;
+    color: #064e3b !important;
+    font-size: 15pt !important;
     font-weight: 800 !important;
     text-align: center !important;
-    margin-bottom: 12px !important;
+    margin: 0 0 6mm 0 !important;
+    padding: 0 !important;
+    letter-spacing: 0.5px !important;
     display: block !important;
     width: 100% !important;
   }
+  #kaltitle em {
+    color: #b45309 !important;
+    font-style: normal !important;
+    -webkit-text-fill-color: #b45309 !important;
+  }
 
+  /* Wrapper Matriks Kalender */
   .cal-matrix-scroll-wrapper {
     overflow: visible !important;
-    border: 2px solid #0b582b !important;
-    border-radius: 8px !important;
+    border: 2px solid #064e3b !important;
+    border-radius: 6px !important;
     box-shadow: none !important;
     margin: 0 !important;
+    width: 100% !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
   }
 
   .cal-grid-matrix {
     min-width: 100% !important;
     width: 100% !important;
+    display: grid !important;
+    grid-template-columns: 75px repeat(7, 1fr) !important;
     background: #ffffff !important;
     page-break-inside: avoid !important;
+    break-inside: avoid !important;
   }
 
-  .cm-cell {
-    background: #ffffff !important;
-    color: #111111 !important;
-    border-right: 1px solid #d1d5db !important;
-    border-bottom: 1px solid #d1d5db !important;
-    min-height: 64px !important;
-    padding: 6px !important;
-    page-break-inside: avoid !important;
-  }
-
+  /* Header Kolom (Waktu, Senin - Minggu) */
   .cm-header-cell {
-    background: #f0fdf4 !important;
-    color: #064e3b !important;
+    background: #064e3b !important;
+    color: #fef3c7 !important;
     font-weight: 700 !important;
-    border-bottom: 2px solid #0b582b !important;
-    padding: 8px 4px !important;
-    font-size: 10.5pt !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.25) !important;
+    border-bottom: 2px solid #042f24 !important;
+    padding: 5px 2px !important;
+    font-size: 9.5pt !important;
+    text-align: center !important;
+    height: 26px !important;
+    min-height: 26px !important;
   }
 
   .cm-header-time {
-    background: #e6f4ea !important;
-    color: #064e3b !important;
+    background: #042f24 !important;
+    color: #fef3c7 !important;
   }
 
-  .cm-header-sat, .cm-header-sun {
-    background: #fef2f2 !important;
-    color: #991b1b !important;
+  .cm-header-sat {
+    background: #7f1d1d !important;
+    color: #fee2e2 !important;
   }
 
+  .cm-header-sun {
+    background: #991b1b !important;
+    color: #fee2e2 !important;
+  }
+
+  /* Kolom Label Minggu (Minggu 1 - 5) */
   .cm-week-label {
-    background: #f8fafc !important;
-    color: #0b582b !important;
+    background: #064e3b !important;
+    color: #fef3c7 !important;
     font-weight: 800 !important;
-    font-size: 9.5pt !important;
+    font-size: 8.5pt !important;
+    border-right: 1.5px solid #042f24 !important;
+    border-bottom: 1px solid #cbd5e1 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    padding: 2px !important;
+  }
+
+  /* Sel Tanggal & Konten — Dibatasi 25.5mm agar pas 1 halaman A4 */
+  .cm-cell {
+    background: #ffffff !important;
+    color: #111827 !important;
+    border-right: 1px solid #cbd5e1 !important;
+    border-bottom: 1px solid #cbd5e1 !important;
+    height: 25.5mm !important;
+    min-height: 25.5mm !important;
+    max-height: 25.5mm !important;
+    padding: 4px 5px !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
   }
 
   .cm-date-num {
     color: #111827 !important;
-    font-size: 11pt !important;
+    font-size: 10pt !important;
     font-weight: 800 !important;
+    text-align: center !important;
+    margin-bottom: 2px !important;
+    line-height: 1 !important;
   }
 
+  /* Sel yang memiliki rencana konten */
   .cm-cell-hasplan {
-    background: #fefce8 !important;
+    background: #fffbeb !important; /* Soft warm gold tint */
   }
   .cm-cell-hasplan .cm-date-num {
-    color: #854d0e !important;
+    color: #92400e !important;
   }
 
+  /* Sel Hari Ini */
   .cm-cell-today {
     background: #ecfdf5 !important;
     border: 2px solid #059669 !important;
   }
-  .cm-cell-today .cm-date-num,
-  .cm-cell-today .cm-plan-box {
+  .cm-cell-today .cm-date-num {
     color: #065f46 !important;
+    font-weight: 800 !important;
+  }
+  .cm-cell-today .cm-plan-box {
+    color: #064e3b !important;
     font-weight: 700 !important;
   }
 
+  /* Teks rencana konten dalam sel */
   .cm-plan-box {
     color: #1f2937 !important;
-    font-size: 9pt !important;
-    line-height: 1.35 !important;
-    margin-top: 2px !important;
+    font-size: 8pt !important;
+    font-weight: 600 !important;
+    line-height: 1.25 !important;
+    text-align: center !important;
+    margin-top: 1px !important;
+    word-break: break-word !important;
+    overflow: hidden !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 4 !important;
+    -webkit-box-orient: vertical !important;
   }
 
+  /* Sel di luar bulan */
   .cm-cell-out {
-    background: #f3f4f6 !important;
-    opacity: 0.5 !important;
+    background: #f1f5f9 !important;
+    opacity: 0.45 !important;
   }
 
+  /* Legend di bawah tabel */
   .cal-legend-row {
     color: #374151 !important;
-    margin-top: 10px !important;
-    font-size: 8.5pt !important;
+    margin-top: 4mm !important;
+    font-size: 8pt !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 24px !important;
     page-break-inside: avoid !important;
+    break-inside: avoid !important;
   }
 }
 </style>
@@ -1705,7 +1779,7 @@ footer.app-footer {
           <h3 id="kaltitle" style="font-size:20px; font-weight:800; color:var(--text-gold);"></h3>
           <div class="cal-actions-bar" style="display:flex; gap:8px;">
             <button type="button" class="btn-apple-secondary" id="ksalinsemua">📋 Salin Seluruh Jadwal</button>
-            <button type="button" class="btn-apple-secondary" onclick="window.print()">🖨️ Cetak / PDF</button>
+            <button type="button" class="btn-apple-secondary" id="kcetakpdf">🖨️ Cetak / PDF</button>
           </div>
         </div>
 
@@ -2415,6 +2489,90 @@ footer.app-footer {
     text += "\nDisusun via Prompt Kit Humas Sekolah Muhammadiyah";
     copyText(text, "Seluruh Jadwal Kalender Berhasil Disalin!");
   });
+
+  // Cetak Kalender Khusus PDF 1 Halaman A4 Landscape (Isolasi Iframe)
+  function cetakKalenderPDF() {
+    var matrix = document.getElementById("kalmatrix");
+    if (!matrix || !matrix.children.length) {
+      showToast("Silakan klik 'Susun Timeline Konten Bulanan' terlebih dahulu.");
+      return;
+    }
+
+    var titleEl = document.getElementById("kaltitle");
+    var titleText = titleEl ? titleEl.innerText.trim() : "Timeline Konten Bulanan";
+
+    // Kloning matriks untuk membuang tombol edit per sel
+    var cloneMatrix = matrix.cloneNode(true);
+    cloneMatrix.querySelectorAll(".cm-cell-edit-btn").forEach(function(b) {
+      b.remove();
+    });
+
+    var frame = document.getElementById("printFrame");
+    if (!frame) {
+      frame = document.createElement("iframe");
+      frame.id = "printFrame";
+      frame.style.position = "fixed";
+      frame.style.right = "100%";
+      frame.style.bottom = "100%";
+      frame.style.width = "0px";
+      frame.style.height = "0px";
+      frame.style.border = "none";
+      document.body.appendChild(frame);
+    }
+
+    var printHtml = '<!DOCTYPE html>' +
+      '<html><head><meta charset="UTF-8"><title>' + titleText + '</title>' +
+      '<style>' +
+      '@page { size: A4 landscape; margin: 8mm 10mm; }' +
+      '* { box-sizing: border-box; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; color-adjust: exact !important; }' +
+      'html, body { margin: 0; padding: 0; background: #ffffff; color: #111827; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; width: 100%; height: 100%; }' +
+      '.print-container { width: 100%; max-width: 100%; padding: 0; margin: 0 auto; }' +
+      '.print-title { text-align: center; font-size: 15pt; font-weight: 800; color: #064e3b; margin: 0 0 5mm 0; letter-spacing: 0.5px; }' +
+      '.cal-grid-matrix { display: grid; grid-template-columns: 75px repeat(7, 1fr); width: 100%; border: 2px solid #064e3b; border-radius: 6px; overflow: hidden; background: #ffffff; page-break-inside: avoid; }' +
+      '.cm-cell { border-right: 1px solid #cbd5e1; border-bottom: 1px solid #cbd5e1; height: 25.5mm; max-height: 25.5mm; padding: 4px 5px; display: flex; flex-direction: column; justify-content: flex-start; overflow: hidden; background: #ffffff; page-break-inside: avoid; }' +
+      '.cm-header-cell { background: #064e3b !important; color: #fef3c7 !important; font-weight: 700; font-size: 9.5pt; text-align: center; height: 26px !important; min-height: 26px !important; padding: 4px 2px; border-bottom: 2px solid #042f24; border-right: 1px solid rgba(255,255,255,0.2); }' +
+      '.cm-header-time { background: #042f24 !important; color: #fef3c7 !important; }' +
+      '.cm-header-sat { background: #7f1d1d !important; color: #fee2e2 !important; }' +
+      '.cm-header-sun { background: #991b1b !important; color: #fee2e2 !important; }' +
+      '.cm-week-label { background: #064e3b !important; color: #fef3c7 !important; font-weight: 800; font-size: 8.5pt; display: flex; align-items: center; justify-content: center; text-align: center; border-right: 1.5px solid #042f24; border-bottom: 1px solid #cbd5e1; }' +
+      '.cm-date-num { font-size: 10pt; font-weight: 800; color: #111827; text-align: center; margin-bottom: 2px; line-height: 1; }' +
+      '.cm-cell-hasplan { background: #fffbeb !important; }' +
+      '.cm-cell-hasplan .cm-date-num { color: #92400e !important; }' +
+      '.cm-cell-today { background: #ecfdf5 !important; border: 2px solid #059669 !important; }' +
+      '.cm-cell-today .cm-date-num { color: #065f46 !important; font-weight: 800; }' +
+      '.cm-cell-today .cm-plan-box { color: #064e3b !important; font-weight: 700; }' +
+      '.cm-plan-box { font-size: 8pt; font-weight: 600; line-height: 1.25; color: #1f2937; text-align: center; word-break: break-word; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; margin-top: 1px; }' +
+      '.cm-cell-out { background: #f1f5f9 !important; opacity: 0.45; }' +
+      '.print-legend { display: flex; justify-content: center; align-items: center; gap: 24px; margin-top: 4mm; font-size: 8pt; color: #4b5563; }' +
+      '.print-legend span { display: inline-flex; align-items: center; gap: 5px; }' +
+      '.print-legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; border: 1px solid #9ca3af; }' +
+      '.cm-cell-edit-btn { display: none !important; }' +
+      '</style></head><body>' +
+      '<div class="print-container">' +
+      '<div class="print-title">' + titleText + '</div>' +
+      cloneMatrix.outerHTML +
+      '<div class="print-legend">' +
+      '  <span><i style="background:#fffbeb;border-color:#d97706;"></i> Ada Rencana</span>' +
+      '  <span><i style="background:#ecfdf5;border-color:#059669;"></i> Hari Ini</span>' +
+      '  <span><i style="background:#fee2e2;border-color:#dc2626;"></i> Akhir Pekan</span>' +
+      '</div>' +
+      '</div></body></html>';
+
+    var doc = frame.contentWindow.document;
+    doc.open();
+    doc.write(printHtml);
+    doc.close();
+
+    setTimeout(function() {
+      frame.contentWindow.focus();
+      frame.contentWindow.print();
+    }, 250);
+  }
+
+  var printBtn = document.getElementById("kcetakpdf");
+  if (printBtn) {
+    printBtn.addEventListener("click", cetakKalenderPDF);
+  }
 
   initKalenderSelects();
 
