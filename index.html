@@ -1914,7 +1914,14 @@ footer.app-footer {
     }
   ];
 
-  var libraryDraftStore = {};
+  var LS_LIB_DRAFT = "pk_library_drafts_v1";
+  function getLibDraftStore(){
+    try{ return JSON.parse(localStorage.getItem(LS_LIB_DRAFT) || "{}"); } catch(e){ return {}; }
+  }
+  function setLibDraftStore(obj){
+    try{ localStorage.setItem(LS_LIB_DRAFT, JSON.stringify(obj)); } catch(e){}
+  }
+  var libraryDraftStore = getLibDraftStore();
 
   function getCombinedPrompt(item, draftText) {
     var raw = item.prompt;
@@ -2055,6 +2062,7 @@ footer.app-footer {
       var ta = card.querySelector(".lib-draft-textarea");
       if(ta) ta.value = "";
       libraryDraftStore[key] = "";
+      setLibDraftStore(libraryDraftStore);
       var wordBadge = card.querySelector(".lib-word-badge");
       if(wordBadge) wordBadge.textContent = "0 kata";
       var pre = card.querySelector(".lib-pre");
@@ -2072,6 +2080,7 @@ footer.app-footer {
       var item = findItemByKey(key);
       var text = e.target.value;
       libraryDraftStore[key] = text;
+      setLibDraftStore(libraryDraftStore);
 
       var words = text.trim() ? text.trim().split(/\s+/).length : 0;
       var wordBadge = card.querySelector(".lib-word-badge");
