@@ -1231,31 +1231,182 @@ footer.app-footer {
   }
 }
 
-/* Print Styles */
+/* ==========================================================================
+   PRINT STYLES (HANYA MENCETAK KALENDER KONTEN)
+   ========================================================================== */
+@page {
+  size: landscape;
+  margin: 10mm 12mm;
+}
+
 @media print {
-  body {
+  html, body {
     background: #ffffff !important;
+    background-image: none !important;
     color: #111111 !important;
+    padding: 0 !important;
+    margin: 0 !important;
   }
-  .apple-mobile-dock, .top-action-bar, .segmented-nav-wrapper, .theme-toggle-btn,
-  .rambu-floating-pill, .btn-primary-apple, .copy-action-bar, footer.app-footer, .cm-cell-edit-btn {
+  
+  body::before {
     display: none !important;
   }
+
+  /* Sembunyikan seluruh elemen di luar kalender */
+  .top-action-bar,
+  .hero-header,
+  .segmented-nav-wrapper,
+  .apple-mobile-dock,
+  .rambu-floating-pill,
+  .dynamic-toast,
+  footer.app-footer,
+  #panel-gen,
+  #panel-lib,
+  #panel-pandu {
+    display: none !important;
+  }
+
+  /* Sembunyikan elemen input form dan tombol susun kalender */
+  #panel-kal .card-title,
+  #panel-kal .card-desc,
+  #panel-kal .cal-controls-row,
+  #panel-kal #kbuat {
+    display: none !important;
+  }
+
+  /* Sembunyikan tombol aksi salin & cetak dan tombol edit per sel */
+  .cal-actions-bar,
+  .cm-cell-edit-btn,
+  .copy-action-bar {
+    display: none !important;
+  }
+
+  /* Reset kontainer untuk layout cetak penuh */
+  .app-container {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
   .glass-card {
     background: transparent !important;
-    border: 1px solid #cccccc !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
     box-shadow: none !important;
   }
-  .tab-panel {
+
+  #panel-kal {
     display: block !important;
   }
-  .cal-grid-matrix {
-    border-color: #333333 !important;
+
+  #kalout {
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
+
+  #kaltitle {
+    color: #0b582b !important;
+    font-size: 16pt !important;
+    font-weight: 800 !important;
+    text-align: center !important;
+    margin-bottom: 12px !important;
+    display: block !important;
+    width: 100% !important;
+  }
+
+  .cal-matrix-scroll-wrapper {
+    overflow: visible !important;
+    border: 2px solid #0b582b !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+  }
+
+  .cal-grid-matrix {
+    min-width: 100% !important;
+    width: 100% !important;
+    background: #ffffff !important;
+    page-break-inside: avoid !important;
+  }
+
   .cm-cell {
     background: #ffffff !important;
     color: #111111 !important;
-    border-color: #dddddd !important;
+    border-right: 1px solid #d1d5db !important;
+    border-bottom: 1px solid #d1d5db !important;
+    min-height: 64px !important;
+    padding: 6px !important;
+    page-break-inside: avoid !important;
+  }
+
+  .cm-header-cell {
+    background: #f0fdf4 !important;
+    color: #064e3b !important;
+    font-weight: 700 !important;
+    border-bottom: 2px solid #0b582b !important;
+    padding: 8px 4px !important;
+    font-size: 10.5pt !important;
+  }
+
+  .cm-header-time {
+    background: #e6f4ea !important;
+    color: #064e3b !important;
+  }
+
+  .cm-header-sat, .cm-header-sun {
+    background: #fef2f2 !important;
+    color: #991b1b !important;
+  }
+
+  .cm-week-label {
+    background: #f8fafc !important;
+    color: #0b582b !important;
+    font-weight: 800 !important;
+    font-size: 9.5pt !important;
+  }
+
+  .cm-date-num {
+    color: #111827 !important;
+    font-size: 11pt !important;
+    font-weight: 800 !important;
+  }
+
+  .cm-cell-hasplan {
+    background: #fefce8 !important;
+  }
+  .cm-cell-hasplan .cm-date-num {
+    color: #854d0e !important;
+  }
+
+  .cm-cell-today {
+    background: #ecfdf5 !important;
+    border: 2px solid #059669 !important;
+  }
+  .cm-cell-today .cm-date-num,
+  .cm-cell-today .cm-plan-box {
+    color: #065f46 !important;
+    font-weight: 700 !important;
+  }
+
+  .cm-plan-box {
+    color: #1f2937 !important;
+    font-size: 9pt !important;
+    line-height: 1.35 !important;
+    margin-top: 2px !important;
+  }
+
+  .cm-cell-out {
+    background: #f3f4f6 !important;
+    opacity: 0.5 !important;
+  }
+
+  .cal-legend-row {
+    color: #374151 !important;
+    margin-top: 10px !important;
+    font-size: 8.5pt !important;
+    page-break-inside: avoid !important;
   }
 }
 </style>
@@ -1552,7 +1703,7 @@ footer.app-footer {
       <div id="kalout" style="display:none; margin-top: 28px;">
         <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:14px;">
           <h3 id="kaltitle" style="font-size:20px; font-weight:800; color:var(--text-gold);"></h3>
-          <div style="display:flex; gap:8px;">
+          <div class="cal-actions-bar" style="display:flex; gap:8px;">
             <button type="button" class="btn-apple-secondary" id="ksalinsemua">📋 Salin Seluruh Jadwal</button>
             <button type="button" class="btn-apple-secondary" onclick="window.print()">🖨️ Cetak / PDF</button>
           </div>
@@ -1562,7 +1713,7 @@ footer.app-footer {
           <div class="cal-grid-matrix" id="kalmatrix"></div>
         </div>
 
-        <div style="display:flex; gap:16px; flex-wrap:wrap; margin-top:14px; font-size:12px; color:var(--text-secondary);">
+        <div class="cal-legend-row" style="display:flex; gap:16px; flex-wrap:wrap; margin-top:14px; font-size:12px; color:var(--text-secondary);">
           <span><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:rgba(245,215,127,0.4);margin-right:4px;"></span>Ada Rencana</span>
           <span><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#10b981;margin-right:4px;"></span>Hari Ini</span>
           <span><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:rgba(239,68,68,0.3);margin-right:4px;"></span>Akhir Pekan</span>
