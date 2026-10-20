@@ -19,6 +19,7 @@ Aplikasi web modern yang dirancang untuk mempercepat dan meningkatkan kualitas p
 
 2. **📚 Library Prompt Siap Pakai**
    - **📰 Berita Rilis (Kaidah Kompas.com & Dewan Pers)**: Dilengkapi fitur **Edit / Tempel Draf Kasar** langsung di aplikasi untuk otomatis disatukan dengan seluruh kaidah jurnalistik (UU Pers No. 40/1999, KEJ, piramida terbalik, 5W+1H, SEO Google Discover).
+   - **📑 Brief Carousel (Cover - Pembahasan - CTA)**: Brief utuh copywriter sosial media (5 opsi judul mengigit, 5 poin penting efektif tanpa ubah fakta/opini, bahasa santun menenangkan, rekomendasi kutipan langsung berita, dan CTA website & no HP).
    - Template Instagram Carousel 7 Slide, Caption Apresiasi Prestasi Siswa, Profil Guru Storytelling, Broadcast PPDB Ramah, Video News Naskah Reels/TikTok 1.30 Menit (Gaya News TV 5W+1H), Brief Tim Dokumentasi, Pernyataan Klarifikasi Isu (Manajemen Krisis), dan Evaluasi Bio/Feed.
    - Bilah pencarian instan dan filter kategori.
 

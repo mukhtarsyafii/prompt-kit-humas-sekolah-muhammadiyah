@@ -2058,6 +2058,15 @@ footer.app-footer {
       prompt: BERITA_RILIS_PROMPT
     },
     {
+      id: "brief_carousel",
+      category: "Instagram",
+      badge: "Brief Carousel",
+      title: "📑 Brief Carousel — Format Utuh Cover, Pembahasan & CTA",
+      desc: "Brief copywriter utuh carousel Instagram berbasis berita/kegiatan sekolah: 5 opsi judul mengigit, 5 poin penting efektif tanpa ubah fakta/opini, bahasa santun menenangkan, kutipan langsung berita, dan CTA.",
+      placeholder: "Tempel draf berita atau materi kegiatan di sini...&#10;&#10;Contoh:&#10;SD Muhammadiyah 1 Padang menyelenggarakan wisuda tahfidz juz 30 pada hari Sabtu (17/10/2026), bertempat di Aula Masjid Taqwa. Sebanyak 45 siswa diwisuda langsung oleh Pimpinan Wilayah Muhammadiyah Sumbar. Program ini dihadiri ratusan wali murid yang haru dan bersyukur. Kepala Sekolah menyampaikan apresiasi mendalam kepada ustadz pembina dan wali murid yang konsisten mendampingi ananda...&#10;Website: sdmuh1padang.sch.id&#10;No HP: 0812-3456-7890",
+      prompt: "Bertindak sebagai Copywriter Sosial media berpengalaman. Buatkan Brief utuh format carousel instagram yang terdiri dari cover-pembahasan-CTA dengan ketentuan sebagai berikut:\n1. Buat 5 opsi judul utama yang kuat dan mengigit.\n2. Susun 5 Poin penting Pastikan di tulis dengan kalimat efektif.\n3. Jangan mengubah fakta.\n4. Jangan Beropini.\n5. Bahas santun dan menenangkan.\n6. Rekomendasi kutipan langsung dari berita.\n7. CTA: nama website, dan no hp\n\nMATERI / DATA BERITA SUMBER:\n[Tempel draf berita atau catatan kegiatan di sini]"
+    },
+    {
       id: "carousel_rekap",
       category: "Instagram",
       badge: "Instagram Carousel",
@@ -2157,6 +2166,11 @@ footer.app-footer {
     // Khusus Berita Rilis Kompas.com
     if(item.id === "berita_rilis" && raw.indexOf("[Tempel catatan kegiatan, rilis internal, atau data mentah berita di sini]") !== -1) {
       return raw.replace("[Tempel catatan kegiatan, rilis internal, atau data mentah berita di sini]", draft);
+    }
+
+    // Khusus Brief Carousel Instagram
+    if(item.id === "brief_carousel" && raw.indexOf("[Tempel draf berita atau catatan kegiatan di sini]") !== -1) {
+      return raw.replace("[Tempel draf berita atau catatan kegiatan di sini]", draft);
     }
 
     // Khusus Video News Reels & TikTok (5W+1H)
