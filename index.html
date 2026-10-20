@@ -1585,7 +1585,7 @@ footer.app-footer {
         <label class="field-label">2 · Platform Publikasi</label>
         <select class="select-control" id="gplat">
           <option value="ig">Instagram (Feed/Carousel: Hook 8 kata + Caption + Hashtag)</option>
-          <option value="tiktok">TikTok / Reels (Script Video 30–45 detik + Hook 3 detik)</option>
+          <option value="tiktok">TikTok &amp; Reels (Video News TV 1.30 Menit Berbasis 5W+1H)</option>
           <option value="wa">WhatsApp Broadcast (Grup Orang Tua: Ringkas, Personal &amp; Hangat)</option>
         </select>
       </div>
@@ -1963,7 +1963,7 @@ footer.app-footer {
 
   var PLAT_DATA = {
     ig: "Platform: Instagram feed & carousel. Format: hook visual-tekstual kuat di baris pertama (maksimal 8 kata), isi cerita padat 60–100 kata, CTA ajakan konsultasi/kunjungan, serta 15–20 hashtag relevan (kombinasi nama kota, pendidikan Islam, dan Muhammadiyah).",
-    tiktok: "Platform: TikTok / Reels (Video Pendek 30–45 detik). Format: naskah terbagi atas 3 detik pertama (hook menghentikan scroll), alur adegan visual per detik, teks overlay di layar, voice-over ringkas, dan CTA penutup.",
+    tiktok: "Platform: TikTok & Instagram Reels (Video News TV 1.30–2 Menit). Format: Naskah terbagi atas 4 elemen produksi (Waktu/Detik, Visual/Kamera B-Roll, Audio/Voice Over jurnalis TV yang berenergi dan lugas, Teks Layar/Lower Third), hook breaking news di detik 0–3, penyampaian fakta 5W+1H yang padat dan mudah dicerna (audiens usia 18–60 tahun), serta penutup CTA yang kredibel.",
     wa: "Platform: WhatsApp Broadcast Grup Orang Tua. Format: pesan 80–120 kata, santun, ramah, gunakan poin-poin jelas dan emoji terukur, serta 1 CTA tunggal yang jelas."
   };
 
@@ -2094,13 +2094,13 @@ footer.app-footer {
       prompt: "Buat draf pesan WhatsApp broadcast untuk grup wali murid tentang pembukaan PPDB di sekolah kami.\nSertakan: jalur pendaftaran, kuota yang tersedia, 3 keunggulan pembiasaan karakter utama, serta kontak admin pendaftaran.\nNada tulisan: ramah, penuh rasa kekeluargaan, panjang maksimal 110 kata dengan 1 CTA yang jelas."
     },
     {
-      id: "tiktok_hook",
+      id: "video_news_reels",
       category: "TikTok",
-      badge: "Video Pendek",
-      title: "🎬 5 Ide Hook Video TikTok / Reels Sekolah",
-      desc: "Gagasan kalimat pembuka 3 detik pertama agar orang tua tidak me-skip video pendek sekolah Anda.",
-      placeholder: "Tempel tema/kegiatan yang mau dibuat video: cth suasana makan siang bersama yang tertib adab, sholat dhuha berjamaah, lab IPA/robotika, atau wawancara siswa cilik...",
-      prompt: "Buatkan 5 ide hook video pendek (TikTok/Reels) untuk sekolah Muhammadiyah kami yang membuat ORANG TUA langsung berhenti scroll dalam 3 detik pertama.\nFormat tiap ide: Kalimat lisan pertama + petunjuk visual adegan awal.\nTema: kemandirian siswa, suasana hafalan Al-Qur'an yang ceria, fasilitas belajar ramah anak, dan kedekatan guru dengan siswa. Hindari sensasi negatif."
+      badge: "Video News (TikTok & Reels)",
+      title: "📺 Video News — Naskah Video Reels & TikTok 1.30 Menit (Gaya News TV)",
+      desc: "Ubah draf berita sekolah 5W+1H menjadi naskah video Reels/TikTok durasi 1.30–2 menit ala Jurnalis TV profesional. Padat, berenergi, visual jelas, dan memikat audiens usia 18–60 tahun.",
+      placeholder: "Tempel draf berita yang berisi data 5W+1H (What, Who, Where, When, Why, How) di sini...&#10;&#10;Contoh:&#10;What: Peresmian Gedung Laboratorium AI & Robotika Siswa&#10;Who: Pimpinan Wilayah Muhammadiyah Sumatera Barat bersama Kepala Sekolah&#10;Where: Kampus Terpadu SD Muhammadiyah Padang&#10;When: Selasa, 20 Oktober 2026&#10;Why: Mempersiapkan literasi digital dan teknologi anak sejak dini&#10;How: Dihadiri 200 wali murid dengan demonstrasi robot kreasi siswa...",
+      prompt: "PROMPT NASKAH VIDEO REELS 1.30 MENIT\n\nPERAN\nAnda adalah seorang Jurnalis Televisi Profesional dan Penulis Naskah Video Digital yang ahli dalam merangkai informasi faktual menjadi narasi visual yang menarik. Tugas Anda adalah mengubah draf berita menjadi naskah video yang padat, berenergi, dan sangat mudah dicerna.\n\nTUJUAN\nMembuat Naskah Video Instagram Reels berdurasi maksimal 2 menit dengan gaya penyampaian formal, jelas, dan lugas (ala News TV), yang dioptimalkan untuk menarik perhatian audiens Milenial dan Gen Z (usia 18-60 tahun).\n\nPEDOMAN FORMAT PENULISAN NASKAH:\n1. Susun naskah dalam format produksi 4 elemen terstruktur:\n   - WAKTU / DURASI (Total durasi 1.30 s/d 2.00 menit)\n   - VISUAL / KAMERA / B-ROLL (Arahan adegan konkret: establishing shot, medium shot ekspresi siswa, cutaway aktivitas, wawancara/soundbite)\n   - AUDIO / VOICE OVER (VO) (Bahasa tutur jurnalis TV yang bertenaga, kalimat ringkas maksimal 15-20 kata per kalimat, artikulatif, tanpa jargon birokrasi)\n   - TEKS ON-SCREEN / LOWER THIRD (Grafis ringkas di layar penjelas nama narasumber, angka capaian, atau poin penting)\n2. Alur Berita TV Vertikal:\n   - Detik 00-03 (Hook Berita): Mulai dengan headline peristiwa paling menarik yang langsung menyita perhatian penonton.\n   - Detik 04-50 (Penguraian Fakta 5W+1H): Sajikan data secara piramida terbalik dan lugas.\n   - Detik 51-75 (Kutipan & Konteks): Suasana atau kutipan singkat dari guru/siswa/wali murid.\n   - Detik 76-90 (Closing Statement & CTA): Penutup kredibel khas presenter berita dan ajakan tindak lanjut.\n\nMATERI SUMBER (DRAF BERITA 5W+1H)\nLengkapi bagian di bawah ini dengan draf berita yang berisi data 5W+1H (What, Who, Where, When, Why, How):\n[Tempel draf berita atau data kegiatan 5W+1H di sini]"
     },
     {
       id: "brief_dokumentasi",
@@ -2157,6 +2157,11 @@ footer.app-footer {
     // Khusus Berita Rilis Kompas.com
     if(item.id === "berita_rilis" && raw.indexOf("[Tempel catatan kegiatan, rilis internal, atau data mentah berita di sini]") !== -1) {
       return raw.replace("[Tempel catatan kegiatan, rilis internal, atau data mentah berita di sini]", draft);
+    }
+
+    // Khusus Video News Reels & TikTok (5W+1H)
+    if(item.id === "video_news_reels" && raw.indexOf("[Tempel draf berita atau data kegiatan 5W+1H di sini]") !== -1) {
+      return raw.replace("[Tempel draf berita atau data kegiatan 5W+1H di sini]", draft);
     }
 
     // Untuk seluruh prompt lainnya, tanamkan blok data/bahan berita secara rapi dan terstruktur
